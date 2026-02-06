@@ -1,0 +1,45 @@
+{
+  "name": "skillsync",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SkillSync - Production-grade Skill Swap Platform",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext jsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.22.3",
+    "zustand": "^4.5.2",
+    "@tanstack/react-query": "^5.28.4",
+    "react-hook-form": "^7.51.1",
+    "axios": "^1.6.8",
+    "lucide-react": "^0.363.0",
+    "framer-motion": "^11.0.24",
+    "react-toastify": "^10.0.5",
+    "date-fns": "^3.6.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.38",
+    "autoprefixer": "^10.4.19"
+  },
+  "main": "postcss.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
