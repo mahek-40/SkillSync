@@ -200,40 +200,6 @@ GET    /api/notifications
 PUT    /api/notifications/:id/read
 ```
 
-## 🎨 Component Usage Examples
-
-### Button Component
-```jsx
-import Button from '@/components/ui/Button';
-
-<Button variant="primary" size="lg">
-  Get Started
-</Button>
-```
-
-### Card Component
-```jsx
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
-
-<Card>
-  <CardHeader>
-    <CardTitle>My Profile</CardTitle>
-  </CardHeader>
-  <CardContent>
-    {/* Content */}
-  </CardContent>
-</Card>
-```
-
-### Modal Component
-```jsx
-import Modal from '@/components/ui/Modal';
-
-<Modal isOpen={isOpen} onClose={handleClose} title="Confirm Action">
-  <p>Are you sure?</p>
-</Modal>
-```
-
 ## 🧪 Testing (Future Enhancement)
 
 ```bash
