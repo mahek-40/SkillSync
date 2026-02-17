@@ -9,12 +9,7 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center">
-                                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                                </svg>
-                            </div>
-                            <span className="text-xl font-bold">SkillSync</span>
+                            <img src="/logo.png" alt="SkillSync" className="h-10" />
                         </div>
                         <p className="text-neutral-400 max-w-md mb-6">
                             Exchange skills, build community. Learn what you want, teach what you know — no money required.
