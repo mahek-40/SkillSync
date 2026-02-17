@@ -4,7 +4,7 @@
 
 <!-- TODO: Add project logo (e.g., in public/logo.png) -->
 <p align="center">
-  <img src="assets/logo.png" alt="SkillSync Logo" width="200"/>
+  <img src="src/assets/logo.png" alt="SkillSync Logo" width="200"/>
 </p>
 
 
