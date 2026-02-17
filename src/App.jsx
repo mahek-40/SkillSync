@@ -6,6 +6,7 @@ import './styles/globals.css';
 
 // Route guards
 import { ProtectedRoute } from './routes/ProtectedRoute';
+import { AdminRoute } from './routes/AdminRoute';
 
 // Public pages
 import { LandingPage } from './pages/public/LandingPage';
@@ -18,6 +19,9 @@ import { ExchangePage } from './pages/exchange/ExchangePage';
 import { ProfilePage } from './pages/profile/ProfilePage';
 import { SwapsPage } from './pages/swaps/SwapsPage';
 import { NotificationsPage } from './pages/notifications/NotificationsPage';
+
+// Admin pages
+import { AdminDashboard } from './pages/admin/AdminDashboard';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -79,6 +83,16 @@ function App() {
               <ProtectedRoute>
                 <NotificationsPage />
               </ProtectedRoute>
+            }
+          />
+
+          {/* Admin Routes */}
+          <Route
+            path="/admin/dashboard"
+            element={
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
             }
           />
 

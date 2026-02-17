@@ -27,7 +27,13 @@ export function LoginPage() {
             const user = await authService.login(formData.email, formData.password);
             login(user);
             toast.success('Welcome back!');
-            navigate('/dashboard');
+
+            // Redirect based on user role
+            if (user.role === 'admin') {
+                navigate('/admin/dashboard');
+            } else {
+                navigate('/dashboard');
+            }
         } catch (err) {
             setError(err.message);
             toast.error(err.message);
