@@ -170,7 +170,7 @@ export function ProfilePage() {
                                             type="button"
                                             onClick={() => handleAvailabilityToggle(option)}
                                             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${formData.availability.includes(option)
-                                                    ? 'bg-brand-green text-white'
+                                                    ? 'bg-brand-purple text-white'
                                                     : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
                                                 }`}
                                         >

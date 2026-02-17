@@ -19,7 +19,6 @@ export function InteractiveBackground({ children, className = '' }) {
         const y = e.clientY - rect.top;
         setMousePos({ x, y });
         
-        // Add glitter particles on mouse move
         if (Math.random() > 0.7) {
             setGlitters(prev => [...prev, {
                 id: Date.now() + Math.random(),
@@ -41,21 +40,14 @@ export function InteractiveBackground({ children, className = '' }) {
                 <motion.div
                     key={glitter.id}
                     className="absolute pointer-events-none"
-                    style={{
-                        left: glitter.x,
-                        top: glitter.y
-                    }}
+                    style={{ left: glitter.x, top: glitter.y }}
                     initial={{ opacity: 0, scale: 0 }}
-                    animate={{ 
-                        opacity: [0, 1, 0],
-                        scale: [0, 1, 0],
-                        y: [0, -20]
-                    }}
+                    animate={{ opacity: [0, 1, 0], scale: [0, 1, 0], y: [0, -20] }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    {glitter.type === 0 && <div className="w-1.5 h-1.5 rounded-full bg-emerald-300" />}
-                    {glitter.type === 1 && <div className="w-2 h-2 rounded-full bg-green-300" />}
-                    {glitter.type === 2 && <div className="w-1 h-1 rounded-full bg-teal-300" />}
+                    {glitter.type === 0 && <div className="w-1.5 h-1.5 rounded-full bg-brand-purple/60" />}
+                    {glitter.type === 1 && <div className="w-2 h-2 rounded-full bg-brand-orange/60" />}
+                    {glitter.type === 2 && <div className="w-1 h-1 rounded-full bg-brand-cyan/60" />}
                 </motion.div>
             ))}
 
@@ -65,7 +57,7 @@ export function InteractiveBackground({ children, className = '' }) {
                 style={{
                     left: mousePos.x - 200,
                     top: mousePos.y - 200,
-                    background: 'radial-gradient(circle, rgba(46, 125, 50, 0.15) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, rgba(110, 2, 111, 0.15) 0%, transparent 70%)',
                     filter: 'blur(40px)'
                 }}
             />
@@ -74,22 +66,15 @@ export function InteractiveBackground({ children, className = '' }) {
             {[...Array(10)].map((_, i) => (
                 <motion.div
                     key={`arrow-up-${i}`}
-                    className="absolute pointer-events-none text-brand-green/25"
-                    style={{
-                        left: `${i * 10}%`,
-                        top: '90%'
-                    }}
+                    className="absolute pointer-events-none text-brand-purple/25"
+                    style={{ left: `${i * 10}%`, top: '90%' }}
                     animate={{
                         x: [0, 100 + i * 20],
                         y: [0, -600 - i * 30],
                         opacity: [0, 0.4, 0],
                         rotate: [0, 45]
                     }}
-                    transition={{
-                        duration: 8 + i * 0.5,
-                        repeat: Infinity,
-                        delay: i * 1.2
-                    }}
+                    transition={{ duration: 8 + i * 0.5, repeat: Infinity, delay: i * 1.2 }}
                 >
                     <ArrowUpRight className="w-4 h-4" />
                 </motion.div>
@@ -98,22 +83,15 @@ export function InteractiveBackground({ children, className = '' }) {
             {[...Array(8)].map((_, i) => (
                 <motion.div
                     key={`arrow-down-${i}`}
-                    className="absolute pointer-events-none text-emerald-400/20"
-                    style={{
-                        right: `${i * 12}%`,
-                        top: '5%'
-                    }}
+                    className="absolute pointer-events-none text-brand-cyan/20"
+                    style={{ right: `${i * 12}%`, top: '5%' }}
                     animate={{
                         x: [0, -80 - i * 15],
                         y: [0, 500 + i * 25],
                         opacity: [0, 0.35, 0],
                         rotate: [0, -45]
                     }}
-                    transition={{
-                        duration: 9 + i * 0.6,
-                        repeat: Infinity,
-                        delay: i * 1.5
-                    }}
+                    transition={{ duration: 9 + i * 0.6, repeat: Infinity, delay: i * 1.5 }}
                 >
                     <ArrowDownLeft className="w-4 h-4" />
                 </motion.div>
@@ -123,30 +101,24 @@ export function InteractiveBackground({ children, className = '' }) {
             <motion.div
                 className="absolute w-96 h-96 rounded-full pointer-events-none"
                 style={{ 
-                    background: 'radial-gradient(circle, rgba(46, 125, 50, 0.3) 0%, rgba(241, 248, 233, 0.5) 100%)',
-                    filter: 'blur(60px)',
+                    background: 'radial-gradient(circle, rgba(250, 137, 26, 0.15) 0%, rgba(241, 230, 201, 0.25) 100%)',
+                    filter: 'blur(80px)',
                     top: '20%', 
                     left: '10%' 
                 }}
-                animate={{
-                    x: [0, 50, 0],
-                    scale: [1, 1.2, 1]
-                }}
+                animate={{ x: [0, 50, 0], scale: [1, 1.2, 1] }}
                 transition={{ duration: 5, repeat: Infinity }}
             />
             
             <motion.div
                 className="absolute w-80 h-80 rounded-full pointer-events-none"
                 style={{ 
-                    background: 'radial-gradient(circle, rgba(76, 175, 80, 0.25) 0%, rgba(16, 185, 129, 0.3) 100%)',
-                    filter: 'blur(60px)',
+                    background: 'radial-gradient(circle, rgba(110, 2, 111, 0.2) 0%, rgba(171, 218, 220, 0.25) 100%)',
+                    filter: 'blur(80px)',
                     bottom: '20%', 
                     right: '15%' 
                 }}
-                animate={{
-                    y: [0, -50, 0],
-                    scale: [1, 1.3, 1]
-                }}
+                animate={{ y: [0, -50, 0], scale: [1, 1.3, 1] }}
                 transition={{ duration: 6, repeat: Infinity, delay: 1 }}
             />
 
@@ -154,7 +126,7 @@ export function InteractiveBackground({ children, className = '' }) {
             {[...Array(15)].map((_, i) => (
                 <motion.div
                     key={`sparkle-${i}`}
-                    className="absolute pointer-events-none text-brand-green/60"
+                    className="absolute pointer-events-none text-brand-orange/60"
                     style={{
                         left: `${5 + i * 6.5}%`,
                         top: `${10 + (i % 4) * 20}%`
@@ -178,7 +150,7 @@ export function InteractiveBackground({ children, className = '' }) {
             {[...Array(12)].map((_, i) => (
                 <motion.div
                     key={`circle-${i}`}
-                    className="absolute pointer-events-none text-brand-green-light/50"
+                    className="absolute pointer-events-none text-brand-cyan/50"
                     style={{
                         left: `${8 + i * 8}%`,
                         top: `${25 + (i % 3) * 25}%`
@@ -252,7 +224,7 @@ export function InteractiveBackground({ children, className = '' }) {
             {[...Array(8)].map((_, i) => (
                 <motion.div
                     key={`zap-${i}`}
-                    className="absolute pointer-events-none text-green-600/50"
+                    className="absolute pointer-events-none text-brand-orange/50"
                     style={{
                         left: `${10 + i * 12}%`,
                         top: `${20 + (i % 2) * 35}%`

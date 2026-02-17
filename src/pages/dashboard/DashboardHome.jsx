@@ -45,15 +45,15 @@ export function DashboardHome() {
 
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <Card className="border-l-4 border-l-brand-green">
+                    <Card className="border-l-4 border-l-brand-purple">
                         <CardContent className="p-6">
                             <div className="flex items-center justify-between">
                                 <div>
                                     <p className="text-sm font-medium text-neutral-500 mb-1">Pending Requests</p>
                                     <p className="text-3xl font-bold text-neutral-900">{pendingSwaps.length}</p>
                                 </div>
-                                <div className="w-12 h-12 rounded-full bg-brand-mint flex items-center justify-center">
-                                    <Clock className="w-6 h-6 text-brand-green" />
+                                <div className="w-12 h-12 rounded-full bg-brand-cyan/20 flex items-center justify-center">
+                                    <Clock className="w-6 h-6 text-brand-purple" />
                                 </div>
                             </div>
                         </CardContent>
@@ -73,7 +73,7 @@ export function DashboardHome() {
                         </CardContent>
                     </Card>
 
-                    <Card className="border-l-4 border-l-green-500">
+                    <Card className="border-l-4 border-l-brand-orange">
                         <CardContent className="p-6">
                             <div className="flex items-center justify-between">
                                 <div>
@@ -82,8 +82,8 @@ export function DashboardHome() {
                                         {swaps.filter(s => s.status === 'completed').length}
                                     </p>
                                 </div>
-                                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-                                    <CheckCircle className="w-6 h-6 text-green-600" />
+                                <div className="w-12 h-12 rounded-full bg-brand-orange/20 flex items-center justify-center">
+                                    <CheckCircle className="w-6 h-6 text-brand-orange" />
                                 </div>
                             </div>
                         </CardContent>
@@ -145,7 +145,7 @@ export function DashboardHome() {
                                         </div>
                                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${swap.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                                                 swap.status === 'accepted' ? 'bg-blue-100 text-blue-800' :
-                                                    swap.status === 'completed' ? 'bg-green-100 text-green-800' :
+                                                    swap.status === 'completed' ? 'bg-brand-orange/20 text-brand-orange' :
                                                         'bg-neutral-100 text-neutral-800'
                                             }`}>
                                             {swap.status}

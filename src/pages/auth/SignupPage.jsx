@@ -117,15 +117,15 @@ export function SignupPage() {
                     <div className="p-8">
                         {/* Progress indicator */}
                         <div className="flex items-center justify-center gap-2 mb-8">
-                            <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-brand-green' : 'bg-neutral-300'}`} />
+                            <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-brand-purple' : 'bg-neutral-300'}`} />
                             <div className="w-12 h-1 bg-neutral-300">
-                                <div className={`h-full bg-brand-green transition-all ${step >= 2 ? 'w-full' : 'w-0'}`} />
+                                <div className={`h-full bg-brand-purple transition-all ${step >= 2 ? 'w-full' : 'w-0'}`} />
                             </div>
-                            <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-brand-green' : 'bg-neutral-300'}`} />
+                            <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-brand-purple' : 'bg-neutral-300'}`} />
                             <div className="w-12 h-1 bg-neutral-300">
-                                <div className={`h-full bg-brand-green transition-all ${step >= 3 ? 'w-full' : 'w-0'}`} />
+                                <div className={`h-full bg-brand-purple transition-all ${step >= 3 ? 'w-full' : 'w-0'}`} />
                             </div>
-                            <div className={`w-3 h-3 rounded-full ${step >= 3 ? 'bg-brand-green' : 'bg-neutral-300'}`} />
+                            <div className={`w-3 h-3 rounded-full ${step >= 3 ? 'bg-brand-purple' : 'bg-neutral-300'}`} />
                         </div>
 
                         <h1 className="text-3xl font-bold text-neutral-900 mb-2 text-center">
@@ -219,7 +219,7 @@ export function SignupPage() {
                                                     type="button"
                                                     onClick={() => handleAvailabilityToggle(option)}
                                                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${formData.availability.includes(option)
-                                                            ? 'bg-brand-green text-white'
+                                                            ? 'bg-brand-purple text-white'
                                                             : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
                                                         }`}
                                                 >
@@ -339,7 +339,7 @@ export function SignupPage() {
                             <div className="mt-6 text-center">
                                 <p className="text-neutral-600">
                                     Already have an account?{' '}
-                                    <Link to="/login" className="text-brand-green font-medium hover:underline">
+                                    <Link to="/login" className="text-brand-purple font-medium hover:underline">
                                         Log in
                                     </Link>
                                 </p>

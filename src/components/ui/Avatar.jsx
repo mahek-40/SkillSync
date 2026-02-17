@@ -21,7 +21,7 @@ export function Avatar({
             className={cn(
                 'rounded-full flex items-center justify-center font-semibold overflow-hidden',
                 sizes[size],
-                !src && 'bg-brand-green text-white',
+                !src && 'bg-primary-gradient text-white',
                 className
             )}
         >

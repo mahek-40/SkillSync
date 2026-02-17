@@ -9,7 +9,7 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 bg-brand-green rounded-lg flex items-center justify-center">
+                            <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                                 </svg>
@@ -21,19 +21,19 @@ export function Footer() {
                         </p>
                         <div className="flex gap-4">
                             <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-green transition-colors">
+                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-purple transition-colors">
                                 <Github className="w-5 h-5" />
                             </a>
                             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-green transition-colors">
+                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-purple transition-colors">
                                 <Twitter className="w-5 h-5" />
                             </a>
                             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-green transition-colors">
+                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-purple transition-colors">
                                 <Linkedin className="w-5 h-5" />
                             </a>
                             <a href="mailto:hello@skillsync.com"
-                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-green transition-colors">
+                                className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center hover:bg-brand-purple transition-colors">
                                 <Mail className="w-5 h-5" />
                             </a>
                         </div>

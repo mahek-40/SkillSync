@@ -23,7 +23,7 @@ export function Input({
                 id={inputId}
                 className={cn(
                     'w-full px-4 py-2.5 border rounded-lg transition-all duration-200',
-                    'focus:outline-none focus:ring-2 focus:ring-brand-green focus:border-transparent',
+                    'focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent',
                     error ? 'border-red-500' : 'border-neutral-300',
                     className
                 )}

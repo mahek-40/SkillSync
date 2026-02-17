@@ -22,7 +22,7 @@ export function Header() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 bg-brand-green rounded-lg flex items-center justify-center">
+                        <div className="w-10 h-10 bg-primary-gradient rounded-lg flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                             </svg>
@@ -33,16 +33,16 @@ export function Header() {
                     {/* Desktop Navigation */}
                     {isAuthenticated && (
                         <div className="hidden md:flex items-center gap-6">
-                            <Link to="/dashboard" className="text-neutral-700 hover:text-brand-green transition-colors">
+                            <Link to="/dashboard" className="text-neutral-700 hover:text-brand-purple transition-colors">
                                 Dashboard
                             </Link>
-                            <Link to="/exchange" className="text-neutral-700 hover:text-brand-green transition-colors">
+                            <Link to="/exchange" className="text-neutral-700 hover:text-brand-purple transition-colors">
                                 Exchange
                             </Link>
-                            <Link to="/swaps" className="text-neutral-700 hover:text-brand-green transition-colors">
+                            <Link to="/swaps" className="text-neutral-700 hover:text-brand-purple transition-colors">
                                 My Swaps
                             </Link>
-                            <Link to="/notifications" className="text-neutral-700 hover:text-brand-green transition-colors">
+                            <Link to="/notifications" className="text-neutral-700 hover:text-brand-purple transition-colors">
                                 Notifications
                             </Link>
                         </div>

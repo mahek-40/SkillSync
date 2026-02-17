@@ -99,7 +99,7 @@ export function SwapsPage() {
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={`px-4 py-2 font-medium capitalize transition-colors whitespace-nowrap ${activeTab === tab
-                                    ? 'text-brand-green border-b-2 border-brand-green'
+                                    ? 'text-brand-purple border-b-2 border-brand-purple'
                                     : 'text-neutral-600 hover:text-neutral-900'
                                 }`}
                         >

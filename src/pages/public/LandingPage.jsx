@@ -9,14 +9,14 @@ export function LandingPage() {
     return (
         <PublicLayout>
             {/* Hero Section */}
-            <InteractiveBackground className="bg-gradient-to-b from-brand-mint to-white py-20">
+            <InteractiveBackground className="bg-gradient-to-b from-brand-cream to-white py-20">
                 <div className="container-custom">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
                             <h1 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-6">
                                 Exchange Skills,
                                 <br />
-                                <span className="text-brand-green">Build Community</span>
+                                <span className="text-brand-purple">Build Community</span>
                             </h1>
                             <p className="text-xl text-neutral-700 mb-8 leading-relaxed">
                                 Learn what you want. Teach what you know. No money required — just skills, passion, and mutual growth.
@@ -57,7 +57,7 @@ export function LandingPage() {
                     <div className="grid md:grid-cols-3 gap-8">
                         {/* Step 1 */}
                         <div className="text-center p-8 rounded-card bg-neutral-50 hover:shadow-soft-lg transition-shadow">
-                            <div className="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 bg-primary-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                                 <Users className="w-8 h-8 text-white" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3">1. Create Your Profile</h3>
@@ -68,7 +68,7 @@ export function LandingPage() {
 
                         {/* Step 2 */}
                         <div className="text-center p-8 rounded-card bg-neutral-50 hover:shadow-soft-lg transition-shadow">
-                            <div className="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 bg-primary-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                                 <Search className="w-8 h-8 text-white" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3">2. Find a Match</h3>
@@ -79,7 +79,7 @@ export function LandingPage() {
 
                         {/* Step 3 */}
                         <div className="text-center p-8 rounded-card bg-neutral-50 hover:shadow-soft-lg transition-shadow">
-                            <div className="w-16 h-16 bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6">
+                            <div className="w-16 h-16 bg-primary-gradient rounded-full flex items-center justify-center mx-auto mb-6">
                                 <CheckCircle className="w-8 h-8 text-white" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3">3. Start Learning</h3>
@@ -101,8 +101,8 @@ export function LandingPage() {
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         <div className="flex gap-4">
                             <div className="flex-shrink-0">
-                                <div className="w-12 h-12 rounded-lg bg-brand-mint flex items-center justify-center">
-                                    <CheckCircle className="w-6 h-6 text-brand-green" />
+                                <div className="w-12 h-12 rounded-lg bg-brand-cyan/20 flex items-center justify-center">
+                                    <CheckCircle className="w-6 h-6 text-brand-purple" />
                                 </div>
                             </div>
                             <div>
@@ -113,8 +113,8 @@ export function LandingPage() {
 
                         <div className="flex gap-4">
                             <div className="flex-shrink-0">
-                                <div className="w-12 h-12 rounded-lg bg-brand-mint flex items-center justify-center">
-                                    <CheckCircle className="w-6 h-6 text-brand-green" />
+                                <div className="w-12 h-12 rounded-lg bg-brand-cyan/20 flex items-center justify-center">
+                                    <CheckCircle className="w-6 h-6 text-brand-purple" />
                                 </div>
                             </div>
                             <div>
@@ -125,8 +125,8 @@ export function LandingPage() {
 
                         <div className="flex gap-4">
                             <div className="flex-shrink-0">
-                                <div className="w-12 h-12 rounded-lg bg-brand-mint flex items-center justify-center">
-                                    <CheckCircle className="w-6 h-6 text-brand-green" />
+                                <div className="w-12 h-12 rounded-lg bg-brand-cyan/20 flex items-center justify-center">
+                                    <CheckCircle className="w-6 h-6 text-brand-purple" />
                                 </div>
                             </div>
                             <div>
@@ -137,8 +137,8 @@ export function LandingPage() {
 
                         <div className="flex gap-4">
                             <div className="flex-shrink-0">
-                                <div className="w-12 h-12 rounded-lg bg-brand-mint flex items-center justify-center">
-                                    <CheckCircle className="w-6 h-6 text-brand-green" />
+                                <div className="w-12 h-12 rounded-lg bg-brand-cyan/20 flex items-center justify-center">
+                                    <CheckCircle className="w-6 h-6 text-brand-purple" />
                                 </div>
                             </div>
                             <div>
@@ -151,14 +151,14 @@ export function LandingPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 bg-brand-green text-white">
+            <section className="py-20 bg-primary-gradient text-white">
                 <div className="container-custom text-center">
                     <h2 className="text-4xl font-bold mb-6">Ready to Start Swapping?</h2>
                     <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
                         Join thousands of learners and teachers exchanging skills every day.
                     </p>
                     <Link to="/signup">
-                        <Button variant="secondary" className="text-lg px-8 py-4 bg-white text-brand-green hover:bg-neutral-100">
+                        <Button variant="secondary" className="text-lg px-8 py-4 bg-white text-brand-purple hover:bg-neutral-100">
                             Get Started Free
                             <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
