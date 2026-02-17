@@ -4,15 +4,9 @@
 
 <!-- TODO: Add project logo (e.g., in public/logo.png) -->
 <p align="center">
-  <img src="![Uploading Gemini_Generated_Image_nj78smnj78smnj78.png…]()
-" alt="SkillSync Logo" width="180"/>
+  <img src="assets/logo.png" alt="SkillSync Logo" width="200"/>
 </p>
 
-<h1 align="center">SkillSync</h1>
-
-<p align="center">
-  Connect. Learn. Grow.
-</p>
 
 <!-- ![Logo](public/logo.png) -->
 
@@ -22,10 +16,6 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 **A dynamic platform for seamless skill exchange and collaboration.**
-
-<!-- TODO: Add live demo link if available -->
-<!-- [Live Demo](https://skillsync.vercel.app) | -->
-[Backend Repository](https://github.com/mahek-40/SkillSync-Backend) <!-- TODO: Adjust link if backend repo exists --> 
 
 </div>
 
@@ -44,11 +34,6 @@ The application is built to consume a separate backend API (not included in this
 -   ☁️ **Cloudinary Integration:** Upload and manage profile pictures and other media.
 -   ⚡ **Responsive Design:** Optimized for a smooth experience across devices.
 
-## 🖥️ Screenshots
-
-<!-- TODO: Add actual screenshots of the application's key pages (e.g., homepage, profile, skill listing, chat). Consider mobile and desktop views. -->
-<!-- ![Screenshot 1](docs/screenshots/homepage.png) -->
-<!-- ![Screenshot 2](docs/screenshots/profile.png) -->
 
 ## 🛠️ Tech Stack
 
@@ -238,6 +223,6 @@ If you have suggestions for improving this project, feel free to fork this repos
 
 **⭐ Star this repo if you find it helpful!**
 
-Made with ❤️ by [Mahek](https://github.com/mahek-40)
+Made with ❤️ by [M & A](https://github.com/mahek-40)
 
 </div>
