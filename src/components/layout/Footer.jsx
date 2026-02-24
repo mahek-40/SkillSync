@@ -9,7 +9,7 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-2 mb-4">
-                            <img src="/logo.png" alt="SkillSync" className="h-10" />
+                            <img src="/logo.png" alt="SkillSync" className="h-18" />
                         </div>
                         <p className="text-neutral-400 max-w-md mb-6">
                             Exchange skills, build community. Learn what you want, teach what you know — no money required.

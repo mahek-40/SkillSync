@@ -17,27 +17,27 @@ export function Header() {
     };
 
     return (
-        <header className="sticky top-0 z-30 bg-white border-b border-neutral-200 shadow-sm">
+        <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-neutral-200/50 shadow-sm">
             <nav className="container-custom">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2">
-                        <img src="/logo.png" alt="SkillSync" className="h-10" />
+                        <img src="/logo.png" alt="SkillSync" className="h-18" />
                     </Link>
 
                     {/* Desktop Navigation */}
                     {isAuthenticated && (
                         <div className="hidden md:flex items-center gap-6">
-                            <Link to="/dashboard" className="text-neutral-700 hover:text-brand-purple transition-colors">
+                            <Link to="/dashboard" className="text-neutral-700 hover:text-brand-purple transition-all duration-300 hover:scale-105 font-medium">
                                 Dashboard
                             </Link>
-                            <Link to="/exchange" className="text-neutral-700 hover:text-brand-purple transition-colors">
+                            <Link to="/exchange" className="text-neutral-700 hover:text-brand-purple transition-all duration-300 hover:scale-105 font-medium">
                                 Exchange
                             </Link>
-                            <Link to="/swaps" className="text-neutral-700 hover:text-brand-purple transition-colors">
+                            <Link to="/swaps" className="text-neutral-700 hover:text-brand-purple transition-all duration-300 hover:scale-105 font-medium">
                                 My Swaps
                             </Link>
-                            <Link to="/notifications" className="text-neutral-700 hover:text-brand-purple transition-colors">
+                            <Link to="/notifications" className="text-neutral-700 hover:text-brand-purple transition-all duration-300 hover:scale-105 font-medium">
                                 Notifications
                             </Link>
                         </div>
