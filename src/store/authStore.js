@@ -17,8 +17,8 @@ export const useAuthStore = create(
 
             logout: () => {
                 set({ user: null, isAuthenticated: false });
-                // Clear all stored data
-                localStorage.clear();
+                // Clear only auth data, not all localStorage (preserves mock user data)
+                localStorage.removeItem('auth-storage');
             },
 
             updateUser: (updates) => {

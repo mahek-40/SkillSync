@@ -130,9 +130,9 @@ export function SwapsPage() {
                         }
                     />
                 ) : (
-                    <div className="space-y-4">
+                    <div className="grid grid-cols-1 gap-4">
                         {filteredSwaps.map(swap => (
-                            <Card key={swap.id}>
+                            <Card key={swap.id} className="bg-gradient-to-br from-white to-blue-50/30 border border-blue-100/50">
                                 <CardContent className="p-6">
                                     <div className="flex items-start justify-between mb-4">
                                         <div>

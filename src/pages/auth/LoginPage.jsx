@@ -7,6 +7,7 @@ import { Button } from '../../components/ui/Button';
 import { useAuthStore } from '../../store/authStore';
 import { authService } from '../../services/authService';
 import { toast } from 'react-toastify';
+import { LogIn, Sparkles } from 'lucide-react';
 
 export function LoginPage() {
     const navigate = useNavigate();
@@ -51,13 +52,25 @@ export function LoginPage() {
 
     return (
         <PublicLayout>
-            <div className="min-h-[80vh] flex items-center justify-center py-12 px-4">
-                <Card className="w-full max-w-md">
+            <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 relative overflow-hidden">
+                {/* Animated background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 -z-10" />
+                <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+
+                <Card className="w-full max-w-md bg-white/80 backdrop-blur-sm border border-purple-100 shadow-2xl">
                     <div className="p-8">
-                        <h1 className="text-3xl font-bold text-neutral-900 mb-2 text-center">
+                        <div className="flex justify-center mb-6">
+                            <div className="w-16 h-16 bg-gradient-to-br from-brand-purple to-brand-cyan rounded-2xl flex items-center justify-center shadow-lg">
+                                <LogIn className="w-8 h-8 text-white" />
+                            </div>
+                        </div>
+
+                        <h1 className="text-3xl font-bold bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent mb-2 text-center">
                             Welcome Back
                         </h1>
-                        <p className="text-neutral-600 mb-8 text-center">
+                        <p className="text-neutral-600 mb-8 text-center flex items-center justify-center gap-2">
+                            <Sparkles className="w-4 h-4 text-brand-purple" />
                             Log in to continue your skill exchange journey
                         </p>
 
@@ -102,15 +115,15 @@ export function LoginPage() {
                         <div className="mt-6 text-center">
                             <p className="text-neutral-600">
                                 Don't have an account?{' '}
-                                <Link to="/signup" className="text-brand-purple font-medium hover:underline">
+                                <Link to="/signup" className="text-brand-purple font-semibold hover:text-brand-cyan transition-colors">
                                     Sign up
                                 </Link>
                             </p>
                         </div>
 
                         {/* Demo credentials hint */}
-                        <div className="mt-6 p-4 bg-neutral-50 rounded-lg text-sm text-neutral-600">
-                            <p className="font-medium mb-1">Demo Credentials:</p>
+                        <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg text-sm text-neutral-700 border border-purple-100">
+                            <p className="font-semibold mb-1 text-brand-purple">Demo Credentials:</p>
                             <p>User: alice@example.com / password123</p>
                             <p>Admin: admin@skillsync.com / admin123</p>
                         </div>

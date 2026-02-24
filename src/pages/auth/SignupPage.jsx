@@ -9,7 +9,7 @@ import { Badge } from '../../components/ui/Badge';
 import { useAuthStore } from '../../store/authStore';
 import { authService } from '../../services/authService';
 import { toast } from 'react-toastify';
-import { X } from 'lucide-react';
+import { X, UserPlus, Sparkles } from 'lucide-react';
 
 export function SignupPage() {
     const navigate = useNavigate();
@@ -112,28 +112,41 @@ export function SignupPage() {
 
     return (
         <PublicLayout>
-            <div className="min-h-[80vh] flex items-center justify-center py-12 px-4">
-                <Card className="w-full max-w-2xl">
+            <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 relative overflow-hidden">
+                {/* Animated background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 -z-10" />
+                <div className="absolute top-10 right-20 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-10 left-20 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+                
+                <Card className="w-full max-w-2xl bg-white/80 backdrop-blur-sm border border-purple-100 shadow-2xl">
                     <div className="p-8">
+                        {/* Icon */}
+                        <div className="flex justify-center mb-6">
+                            <div className="w-16 h-16 bg-gradient-to-br from-brand-purple to-brand-cyan rounded-2xl flex items-center justify-center shadow-lg">
+                                <UserPlus className="w-8 h-8 text-white" />
+                            </div>
+                        </div>
+                        
                         {/* Progress indicator */}
                         <div className="flex items-center justify-center gap-2 mb-8">
-                            <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-brand-purple' : 'bg-neutral-300'}`} />
-                            <div className="w-12 h-1 bg-neutral-300">
-                                <div className={`h-full bg-brand-purple transition-all ${step >= 2 ? 'w-full' : 'w-0'}`} />
+                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 1 ? 'bg-gradient-to-r from-brand-purple to-brand-cyan' : 'bg-neutral-300'}`} />
+                            <div className="w-12 h-1 bg-neutral-200 rounded-full overflow-hidden">
+                                <div className={`h-full bg-gradient-to-r from-brand-purple to-brand-cyan transition-all duration-500 ${step >= 2 ? 'w-full' : 'w-0'}`} />
                             </div>
-                            <div className={`w-3 h-3 rounded-full ${step >= 2 ? 'bg-brand-purple' : 'bg-neutral-300'}`} />
-                            <div className="w-12 h-1 bg-neutral-300">
-                                <div className={`h-full bg-brand-purple transition-all ${step >= 3 ? 'w-full' : 'w-0'}`} />
+                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 2 ? 'bg-gradient-to-r from-brand-purple to-brand-cyan' : 'bg-neutral-300'}`} />
+                            <div className="w-12 h-1 bg-neutral-200 rounded-full overflow-hidden">
+                                <div className={`h-full bg-gradient-to-r from-brand-purple to-brand-cyan transition-all duration-500 ${step >= 3 ? 'w-full' : 'w-0'}`} />
                             </div>
-                            <div className={`w-3 h-3 rounded-full ${step >= 3 ? 'bg-brand-purple' : 'bg-neutral-300'}`} />
+                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 3 ? 'bg-gradient-to-r from-brand-purple to-brand-cyan' : 'bg-neutral-300'}`} />
                         </div>
 
-                        <h1 className="text-3xl font-bold text-neutral-900 mb-2 text-center">
+                        <h1 className="text-3xl font-bold bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent mb-2 text-center">
                             {step === 1 && 'Create Your Account'}
                             {step === 2 && 'Tell Us About You'}
                             {step === 3 && 'Your Skills'}
                         </h1>
-                        <p className="text-neutral-600 mb-8 text-center">
+                        <p className="text-neutral-600 mb-8 text-center flex items-center justify-center gap-2">
+                            <Sparkles className="w-4 h-4 text-brand-purple" />
                             {step === 1 && 'Start your skill exchange journey'}
                             {step === 2 && 'Help others find you'}
                             {step === 3 && 'What can you teach? What do you want to learn?'}
@@ -339,7 +352,7 @@ export function SignupPage() {
                             <div className="mt-6 text-center">
                                 <p className="text-neutral-600">
                                     Already have an account?{' '}
-                                    <Link to="/login" className="text-brand-purple font-medium hover:underline">
+                                    <Link to="/login" className="text-brand-purple font-semibold hover:text-brand-cyan transition-colors">
                                         Log in
                                     </Link>
                                 </p>

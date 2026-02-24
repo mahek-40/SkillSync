@@ -82,7 +82,7 @@ export function ExchangePage() {
                 </div>
 
                 {/* Search and Filters */}
-                <div className="bg-white rounded-card shadow-soft p-6">
+                <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-card shadow-soft p-6 border border-purple-100/50">
                     <div className="flex items-center gap-2 mb-4">
                         <Search className="w-5 h-5 text-neutral-400" />
                         <Input
@@ -116,7 +116,7 @@ export function ExchangePage() {
                             {filteredUsers.length} {filteredUsers.length === 1 ? 'user' : 'users'} found
                         </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
                             {filteredUsers.map(u => (
                                 <SkillCard
                                     key={u.id}

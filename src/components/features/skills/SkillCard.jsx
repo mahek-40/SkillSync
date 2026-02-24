@@ -19,8 +19,8 @@ export function SkillCard({ user, onRequestSwap, currentSwapStatus }) {
     };
 
     return (
-        <Card className="h-full flex flex-col">
-            <CardContent>
+        <Card className="h-full flex flex-col bg-gradient-to-br from-white to-purple-50/30 border border-purple-100/50">
+            <CardContent className="flex flex-col h-full p-6">
                 {/* User Info */}
                 <div className="flex items-start gap-4 mb-4">
                     <Avatar src={user.avatar} alt={user.name} size="lg" />
@@ -38,56 +38,58 @@ export function SkillCard({ user, onRequestSwap, currentSwapStatus }) {
                 </div>
 
                 {/* Bio */}
-                {user.bio && (
-                    <p className="text-sm text-neutral-600 mb-4 line-clamp-2">
-                        {user.bio}
-                    </p>
-                )}
+                <div className="flex-1">
+                    {user.bio && (
+                        <p className="text-sm text-neutral-600 mb-4 line-clamp-2">
+                            {user.bio}
+                        </p>
+                    )}
 
-                {/* Skills Offered */}
-                {user.skillsOffered && user.skillsOffered.length > 0 && (
-                    <div className="mb-3">
-                        <p className="text-xs font-medium text-neutral-500 mb-2">Offers</p>
-                        <div className="flex flex-wrap gap-2">
-                            {user.skillsOffered.slice(0, 3).map((skill, index) => (
-                                <Badge key={index} variant="offered">
-                                    {skill}
-                                </Badge>
-                            ))}
-                            {user.skillsOffered.length > 3 && (
-                                <Badge variant="default">+{user.skillsOffered.length - 3}</Badge>
-                            )}
+                    {/* Skills Offered */}
+                    {user.skillsOffered && user.skillsOffered.length > 0 && (
+                        <div className="mb-3">
+                            <p className="text-xs font-medium text-neutral-500 mb-2">Offers</p>
+                            <div className="flex flex-wrap gap-2">
+                                {user.skillsOffered.slice(0, 3).map((skill, index) => (
+                                    <Badge key={index} variant="offered">
+                                        {skill}
+                                    </Badge>
+                                ))}
+                                {user.skillsOffered.length > 3 && (
+                                    <Badge variant="default">+{user.skillsOffered.length - 3}</Badge>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
-                {/* Skills Wanted */}
-                {user.skillsWanted && user.skillsWanted.length > 0 && (
-                    <div className="mb-4">
-                        <p className="text-xs font-medium text-neutral-500 mb-2">Wants</p>
-                        <div className="flex flex-wrap gap-2">
-                            {user.skillsWanted.slice(0, 3).map((skill, index) => (
-                                <Badge key={index} variant="wanted">
-                                    {skill}
-                                </Badge>
-                            ))}
-                            {user.skillsWanted.length > 3 && (
-                                <Badge variant="default">+{user.skillsWanted.length - 3}</Badge>
-                            )}
+                    {/* Skills Wanted */}
+                    {user.skillsWanted && user.skillsWanted.length > 0 && (
+                        <div className="mb-3">
+                            <p className="text-xs font-medium text-neutral-500 mb-2">Wants</p>
+                            <div className="flex flex-wrap gap-2">
+                                {user.skillsWanted.slice(0, 3).map((skill, index) => (
+                                    <Badge key={index} variant="wanted">
+                                        {skill}
+                                    </Badge>
+                                ))}
+                                {user.skillsWanted.length > 3 && (
+                                    <Badge variant="default">+{user.skillsWanted.length - 3}</Badge>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
-                {/* Availability */}
-                {user.availability && user.availability.length > 0 && (
-                    <div className="flex items-center gap-2 text-sm text-neutral-600 mb-4">
-                        <Calendar className="w-4 h-4" />
-                        <span>{user.availability.join(', ')}</span>
-                    </div>
-                )}
+                    {/* Availability */}
+                    {user.availability && user.availability.length > 0 && (
+                        <div className="flex items-center gap-2 text-sm text-neutral-600">
+                            <Calendar className="w-4 h-4" />
+                            <span className="truncate">{user.availability.join(', ')}</span>
+                        </div>
+                    )}
+                </div>
 
                 {/* Action Button */}
-                <div className="mt-auto">
+                <div className="mt-4 pt-4 border-t border-purple-100">
                     {isPending ? (
                         <div className="space-y-2">
                             <Button variant="secondary" className="w-full" disabled>
