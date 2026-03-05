@@ -36,13 +36,13 @@ export function DashboardHome() {
             <div className="space-y-8">
                 {/* Welcome Section with Gradient */}
                 <motion.div 
-                    className="relative overflow-hidden rounded-card-lg bg-gradient-to-br from-brand-purple via-brand-cyan to-brand-purple bg-[length:200%_200%] animate-gradient p-8 text-white"
+                    className="relative overflow-hidden rounded-xl bg-gradient-to-br from-brand via-primary to-brand p-8 text-white shadow-soft-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
                     <div className="relative z-10">
-                        <h1 className="text-4xl font-bold mb-2">
+                        <h1 className="text-4xl font-bold mb-2 text-white">
                             Welcome back, {user.name}! 👋
                         </h1>
                         <p className="text-white/90 text-lg">
@@ -51,7 +51,7 @@ export function DashboardHome() {
                     </div>
                     {/* Decorative circles */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-orange/20 rounded-full blur-3xl" />
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/20 rounded-full blur-3xl" />
                 </motion.div>
 
                 {/* Stats Grid with animations */}
@@ -61,15 +61,15 @@ export function DashboardHome() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                        <Card className="border-l-4 border-l-brand-purple hover:shadow-glow-purple transition-all duration-300 hover:scale-105">
+                        <Card className="border-l-4 border-l-brand hover:shadow-soft-lg transition-all duration-300 bg-white">
                             <CardContent className="p-6">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-sm font-medium text-neutral-500 mb-1">Pending Requests</p>
-                                        <p className="text-4xl font-bold text-neutral-900">{pendingSwaps.length}</p>
+                                        <p className="text-sm font-medium text-primary/60 mb-1">Pending Requests</p>
+                                        <p className="text-4xl font-bold text-primary">{pendingSwaps.length}</p>
                                     </div>
-                                    <div className="w-14 h-14 rounded-full bg-brand-purple/10 flex items-center justify-center">
-                                        <Clock className="w-7 h-7 text-brand-purple" />
+                                    <div className="w-14 h-14 rounded-full bg-brand/10 flex items-center justify-center">
+                                        <Clock className="w-7 h-7 text-brand" />
                                     </div>
                                 </div>
                             </CardContent>
@@ -81,15 +81,15 @@ export function DashboardHome() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        <Card className="border-l-4 border-l-brand-cyan hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <Card className="border-l-4 border-l-brand hover:shadow-soft-lg transition-all duration-300 bg-white">
                             <CardContent className="p-6">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-sm font-medium text-neutral-500 mb-1">Active Swaps</p>
-                                        <p className="text-4xl font-bold text-neutral-900">{activeSwaps.length}</p>
+                                        <p className="text-sm font-medium text-primary/60 mb-1">Active Swaps</p>
+                                        <p className="text-4xl font-bold text-primary">{activeSwaps.length}</p>
                                     </div>
-                                    <div className="w-14 h-14 rounded-full bg-brand-cyan/10 flex items-center justify-center">
-                                        <Users className="w-7 h-7 text-brand-cyan" />
+                                    <div className="w-14 h-14 rounded-full bg-brand/10 flex items-center justify-center">
+                                        <Users className="w-7 h-7 text-brand" />
                                     </div>
                                 </div>
                             </CardContent>
@@ -101,17 +101,17 @@ export function DashboardHome() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                        <Card className="border-l-4 border-l-brand-orange hover:shadow-glow-orange transition-all duration-300 hover:scale-105">
+                        <Card className="border-l-4 border-l-accent hover:shadow-soft-lg transition-all duration-300 bg-white">
                             <CardContent className="p-6">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <p className="text-sm font-medium text-neutral-500 mb-1">Completed</p>
-                                        <p className="text-4xl font-bold text-neutral-900">
+                                        <p className="text-sm font-medium text-primary/60 mb-1">Completed</p>
+                                        <p className="text-4xl font-bold text-primary">
                                             {swaps.filter(s => s.status === 'completed').length}
                                         </p>
                                     </div>
-                                    <div className="w-14 h-14 rounded-full bg-brand-orange/10 flex items-center justify-center">
-                                        <CheckCircle className="w-7 h-7 text-brand-orange" />
+                                    <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center">
+                                        <CheckCircle className="w-7 h-7 text-accent" />
                                     </div>
                                 </div>
                             </CardContent>
@@ -126,16 +126,16 @@ export function DashboardHome() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <Card className="hover:shadow-premium transition-all duration-300 hover:scale-105 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/5 rounded-full blur-2xl" />
+                        <Card className="hover:shadow-soft-lg transition-all duration-300 relative overflow-hidden bg-white">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-full blur-2xl" />
                             <CardHeader>
                                 <CardTitle className="flex items-center gap-2">
-                                    <TrendingUp className="w-5 h-5 text-brand-purple" />
+                                    <TrendingUp className="w-5 h-5 text-brand" />
                                     Find Your Next Match
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-neutral-600 mb-4">
+                                <p className="text-primary/60 mb-4">
                                     Discover users with the skills you want to learn and connect with them.
                                 </p>
                                 <Link to="/exchange">
@@ -153,16 +153,16 @@ export function DashboardHome() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.5 }}
                     >
-                        <Card className="hover:shadow-premium transition-all duration-300 hover:scale-105 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-cyan/5 rounded-full blur-2xl" />
+                        <Card className="hover:shadow-soft-lg transition-all duration-300 relative overflow-hidden bg-white">
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 rounded-full blur-2xl" />
                             <CardHeader>
                                 <CardTitle className="flex items-center gap-2">
-                                    <Users className="w-5 h-5 text-brand-cyan" />
+                                    <Users className="w-5 h-5 text-brand" />
                                     Update Your Profile
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-neutral-600 mb-4">
+                                <p className="text-primary/60 mb-4">
                                     Keep your skills and availability up to date to get better matches.
                                 </p>
                                 <Link to="/profile">
@@ -183,7 +183,7 @@ export function DashboardHome() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
-                        <Card className="hover:shadow-lg transition-shadow duration-300">
+                        <Card className="hover:shadow-soft-lg transition-shadow duration-300 bg-white">
                             <CardHeader>
                                 <CardTitle>Recent Swaps</CardTitle>
                             </CardHeader>
@@ -192,22 +192,22 @@ export function DashboardHome() {
                                     {swaps.slice(0, 5).map((swap, index) => (
                                         <motion.div 
                                             key={swap.id} 
-                                            className="flex items-center justify-between p-4 bg-gradient-to-r from-neutral-50 to-white rounded-lg hover:shadow-md transition-all duration-300"
+                                            className="flex items-center justify-between p-4 bg-white border border-secondary/30 rounded-lg hover:shadow-soft transition-all duration-300"
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ duration: 0.3, delay: 0.7 + index * 0.1 }}
                                         >
                                             <div>
-                                                <p className="font-medium text-neutral-900">Skill Exchange Request</p>
-                                                <p className="text-sm text-neutral-600">
+                                                <p className="font-medium text-primary">Skill Exchange Request</p>
+                                                <p className="text-sm text-primary/60">
                                                     {new Date(swap.createdAt).toLocaleDateString()}
                                                 </p>
                                             </div>
                                             <span className={`px-4 py-2 rounded-full text-sm font-medium ${
-                                                swap.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                                                swap.status === 'accepted' ? 'bg-brand-cyan/20 text-brand-cyan' :
-                                                swap.status === 'completed' ? 'bg-brand-orange/20 text-brand-orange' :
-                                                'bg-neutral-100 text-neutral-800'
+                                                swap.status === 'pending' ? 'bg-accent/20 text-accent' :
+                                                swap.status === 'accepted' ? 'bg-brand/20 text-brand' :
+                                                swap.status === 'completed' ? 'bg-brand/30 text-primary' :
+                                                'bg-secondary/30 text-primary'
                                             }`}>
                                                 {swap.status}
                                             </span>

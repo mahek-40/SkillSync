@@ -5,6 +5,7 @@ const STORAGE_KEYS = {
     USERS: 'skillsync_users',
     SWAPS: 'skillsync_swaps',
     NOTIFICATIONS: 'skillsync_notifications',
+    REVIEWS: 'skillsync_reviews',
 };
 
 // Simulate network delay
@@ -36,6 +37,7 @@ const initMockData = () => {
                 availability: ['Weekends', 'Evenings'],
                 skillsOffered: ['React', 'JavaScript', 'UI/UX Design'],
                 skillsWanted: ['Python', 'Machine Learning', 'Spanish'],
+                experienceLevel: 'intermediate',
                 role: 'user',
             },
             {
@@ -49,6 +51,7 @@ const initMockData = () => {
                 availability: ['Weekdays', 'Mornings'],
                 skillsOffered: ['Python', 'Data Science', 'SQL'],
                 skillsWanted: ['React', 'Node.js', 'Guitar'],
+                experienceLevel: 'advanced',
                 role: 'user',
             },
             {
@@ -74,6 +77,10 @@ const initMockData = () => {
 
     if (!getStorageData(STORAGE_KEYS.NOTIFICATIONS)) {
         setStorageData(STORAGE_KEYS.NOTIFICATIONS, []);
+    }
+
+    if (!getStorageData(STORAGE_KEYS.REVIEWS)) {
+        setStorageData(STORAGE_KEYS.REVIEWS, []);
     }
 };
 
@@ -134,7 +141,14 @@ export const api = {
         const user = users.find(u => u.id === id);
         if (!user) throw new Error('User not found');
         const { password, ...userWithoutPassword } = user;
-        return userWithoutPassword;
+        
+        // Add completed swaps count
+        const swaps = getStorageData(STORAGE_KEYS.SWAPS) || [];
+        const completedSwaps = swaps.filter(
+            s => (s.requesterId === id || s.receiverId === id) && s.status === 'completed'
+        ).length;
+        
+        return { ...userWithoutPassword, completedSwaps };
     },
 
     async updateUser(id, updates) {
@@ -250,5 +264,47 @@ export const api = {
         }
 
         return notifications[index];
+    },
+
+    // Reviews
+    async getUserReviews(userId) {
+        await delay();
+        const reviews = getStorageData(STORAGE_KEYS.REVIEWS) || [];
+        const users = getStorageData(STORAGE_KEYS.USERS) || [];
+        
+        return reviews
+            .filter(r => r.reviewedUserId === userId)
+            .map(review => {
+                const reviewer = users.find(u => u.id === review.reviewerId);
+                return {
+                    ...review,
+                    reviewerName: reviewer?.name || 'Unknown',
+                    reviewerAvatar: reviewer?.avatar || null,
+                };
+            })
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    },
+
+    async createReview(reviewData) {
+        await delay();
+        const reviews = getStorageData(STORAGE_KEYS.REVIEWS) || [];
+        const users = getStorageData(STORAGE_KEYS.USERS) || [];
+
+        const newReview = {
+            id: Date.now().toString(),
+            ...reviewData,
+            createdAt: new Date().toISOString(),
+        };
+
+        reviews.push(newReview);
+        setStorageData(STORAGE_KEYS.REVIEWS, reviews);
+
+        // Get reviewer info
+        const reviewer = users.find(u => u.id === reviewData.reviewerId);
+        return {
+            ...newReview,
+            reviewerName: reviewer?.name || 'Unknown',
+            reviewerAvatar: reviewer?.avatar || null,
+        };
     },
 };

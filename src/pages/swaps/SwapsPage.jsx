@@ -21,7 +21,18 @@ export function SwapsPage() {
         const fetchSwaps = async () => {
             try {
                 const data = await api.getSwapsByUser(user.id);
-                setSwaps(data);
+                // Fetch user details for each swap
+                const users = JSON.parse(localStorage.getItem('skillsync_users') || '[]');
+                const swapsWithUsers = data.map(swap => {
+                    const requester = users.find(u => u.id === swap.requesterId);
+                    const receiver = users.find(u => u.id === swap.receiverId);
+                    return {
+                        ...swap,
+                        requesterName: requester?.name || 'Unknown',
+                        receiverName: receiver?.name || 'Unknown',
+                    };
+                });
+                setSwaps(swapsWithUsers);
             } catch (error) {
                 console.error('Error fetching swaps:', error);
                 toast.error('Failed to load swaps');
@@ -88,19 +99,19 @@ export function SwapsPage() {
             <div className="space-y-6">
                 {/* Header */}
                 <div>
-                    <h1 className="text-3xl font-bold text-neutral-900 mb-2">My Swaps</h1>
-                    <p className="text-neutral-600">Manage your skill exchange requests</p>
+                    <h1 className="text-3xl font-bold text-primary mb-2">My Swaps</h1>
+                    <p className="text-primary/60">Manage your skill exchange requests</p>
                 </div>
 
                 {/* Tabs */}
-                <div className="flex gap-2 border-b border-neutral-200 overflow-x-auto">
+                <div className="flex gap-2 border-b border-secondary overflow-x-auto">
                     {['all', 'incoming', 'outgoing', 'active', 'completed'].map(tab => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={`px-4 py-2 font-medium capitalize transition-colors whitespace-nowrap ${activeTab === tab
-                                    ? 'text-brand-purple border-b-2 border-brand-purple'
-                                    : 'text-neutral-600 hover:text-neutral-900'
+                                    ? 'text-brand border-b-2 border-brand'
+                                    : 'text-primary/60 hover:text-primary'
                                 }`}
                         >
                             {tab}
@@ -132,21 +143,32 @@ export function SwapsPage() {
                 ) : (
                     <div className="grid grid-cols-1 gap-4">
                         {filteredSwaps.map(swap => (
-                            <Card key={swap.id} className="bg-gradient-to-br from-white to-blue-50/30 border border-blue-100/50">
+                            <Card key={swap.id} className="bg-white border border-secondary/30 hover:shadow-soft-lg transition-all">
                                 <CardContent className="p-6">
                                     <div className="flex items-start justify-between mb-4">
-                                        <div>
-                                            <h3 className="font-semibold text-lg text-neutral-900 mb-1">
+                                        <div className="flex-1">
+                                            <h3 className="font-semibold text-lg text-primary mb-1">
                                                 Skill Swap Request
                                             </h3>
-                                            <p className="text-sm text-neutral-600">
+                                            <p className="text-sm text-primary/60 mb-2">
                                                 Created {new Date(swap.createdAt).toLocaleDateString()}
                                             </p>
+                                            <div className="flex items-center gap-2 text-sm">
+                                                <span className="font-medium text-primary">From:</span>
+                                                <Link to={`/user/${swap.requesterId}`} className="text-brand hover:underline font-medium">
+                                                    {swap.requesterName}
+                                                </Link>
+                                                <span className="text-primary/60">→</span>
+                                                <span className="font-medium text-primary">To:</span>
+                                                <Link to={`/user/${swap.receiverId}`} className="text-brand hover:underline font-medium">
+                                                    {swap.receiverName}
+                                                </Link>
+                                            </div>
                                         </div>
                                         {getStatusBadge(swap.status)}
                                     </div>
 
-                                    <div className="text-sm text-neutral-700 mb-4">
+                                    <div className="text-sm text-primary/70 mb-4">
                                         <p>
                                             <span className="font-medium">Direction:</span>{' '}
                                             {swap.requesterId === user.id ? 'Outgoing' : 'Incoming'}
@@ -173,9 +195,9 @@ export function SwapsPage() {
 
                                     {/* View details link */}
                                     {swap.status === 'accepted' && (
-                                        <Link to={`/swaps/${swap.id}`}>
+                                        <Link to={`/user/${swap.requesterId === user.id ? swap.receiverId : swap.requesterId}`}>
                                             <Button variant="secondary" className="mt-3">
-                                                View Details
+                                                View Profile
                                                 <ArrowRight className="ml-2 w-4 h-4" />
                                             </Button>
                                         </Link>

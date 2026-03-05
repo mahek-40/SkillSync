@@ -8,13 +8,13 @@ export function Button({
     disabled = false,
     ...props
 }) {
-    const baseStyles = 'px-6 py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-purple/50 focus:ring-offset-2 inline-flex items-center justify-center';
+    const baseStyles = 'px-6 py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand/50 focus:ring-offset-2 inline-flex items-center justify-center relative';
 
     const variants = {
-        primary: 'bg-brand-purple text-white hover:bg-brand-purple/90 hover:shadow-lg hover:scale-105',
-        secondary: 'border-2 border-brand-purple text-brand-purple bg-white hover:bg-brand-purple hover:text-white hover:shadow-md',
-        ghost: 'text-brand-purple hover:bg-brand-purple/10',
-        danger: 'bg-red-600 text-white hover:bg-red-700 hover:shadow-md',
+        primary: 'bg-brand text-white hover:bg-[#156B60] shadow-soft hover:shadow-soft-lg hover:-translate-y-0.5',
+        secondary: 'border-2 border-brand text-brand bg-white hover:bg-brand hover:text-white hover:-translate-y-0.5',
+        ghost: 'text-brand hover:bg-secondary/30',
+        danger: 'bg-red-600 text-white hover:bg-red-700',
     };
 
     return (

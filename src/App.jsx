@@ -17,6 +17,7 @@ import { SignupPage } from './pages/auth/SignupPage';
 import { DashboardHome } from './pages/dashboard/DashboardHome';
 import { ExchangePage } from './pages/exchange/ExchangePage';
 import { ProfilePage } from './pages/profile/ProfilePage';
+import { UserProfilePage } from './pages/profile/UserProfilePage';
 import { SwapsPage } from './pages/swaps/SwapsPage';
 import { NotificationsPage } from './pages/notifications/NotificationsPage';
 
@@ -42,7 +43,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route path="/browse" element={<LandingPage />} />
+          <Route path="/browse" element={<ExchangePage />} />
 
           {/* Protected Routes */}
           <Route
@@ -66,6 +67,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/user/:userId"
+            element={
+              <ProtectedRoute>
+                <UserProfilePage />
               </ProtectedRoute>
             }
           />

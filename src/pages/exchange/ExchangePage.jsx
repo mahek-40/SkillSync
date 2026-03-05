@@ -73,18 +73,18 @@ export function ExchangePage() {
             <div className="space-y-6">
                 {/* Header */}
                 <div>
-                    <h1 className="text-3xl font-bold text-neutral-900 mb-2">
+                    <h1 className="text-3xl font-bold text-primary mb-2">
                         Exchange Skills
                     </h1>
-                    <p className="text-neutral-600">
+                    <p className="text-primary/60">
                         Find your perfect skill-swap match
                     </p>
                 </div>
 
                 {/* Search and Filters */}
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-card shadow-soft p-6 border border-purple-100/50">
+                <div className="bg-gradient-to-r from-secondary/20 to-brand/10 rounded-card shadow-soft p-6 border border-secondary/50">
                     <div className="flex items-center gap-2 mb-4">
-                        <Search className="w-5 h-5 text-neutral-400" />
+                        <Search className="w-5 h-5 text-primary/40" />
                         <Input
                             placeholder="Search by name, location, or skills..."
                             value={searchQuery}
@@ -112,7 +112,7 @@ export function ExchangePage() {
                     />
                 ) : (
                     <>
-                        <p className="text-sm text-neutral-600">
+                        <p className="text-sm text-primary/60">
                             {filteredUsers.length} {filteredUsers.length === 1 ? 'user' : 'users'} found
                         </p>
 

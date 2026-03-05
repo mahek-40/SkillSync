@@ -15,7 +15,7 @@ export function Textarea({
             {label && (
                 <label
                     htmlFor={textareaId}
-                    className="block text-sm font-medium text-neutral-900 mb-1.5"
+                    className="block text-sm font-medium text-primary mb-1.5"
                 >
                     {label}
                 </label>
@@ -24,9 +24,9 @@ export function Textarea({
                 id={textareaId}
                 rows={rows}
                 className={cn(
-                    'w-full px-4 py-2.5 border rounded-lg transition-all duration-200 resize-vertical',
-                    'focus:outline-none focus:ring-2 focus:ring-brand-purple focus:border-transparent',
-                    error ? 'border-red-500' : 'border-neutral-300',
+                    'w-full px-4 py-2.5 border rounded-lg transition-all duration-200 resize-vertical bg-white',
+                    'focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent',
+                    error ? 'border-red-500' : 'border-secondary',
                     className
                 )}
                 {...props}

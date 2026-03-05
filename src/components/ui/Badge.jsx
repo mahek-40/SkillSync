@@ -7,13 +7,13 @@ export function Badge({
     ...props
 }) {
     const variants = {
-        default: 'bg-neutral-100 text-neutral-700',
-        offered: 'bg-brand-purple text-white',
-        wanted: 'border-2 border-brand-purple text-brand-purple bg-white',
-        success: 'bg-brand-cyan/20 text-brand-purple',
-        warning: 'bg-yellow-100 text-yellow-800',
+        default: 'bg-secondary/30 text-primary',
+        offered: 'bg-brand text-white',
+        wanted: 'border-2 border-brand text-brand bg-white',
+        success: 'bg-brand/10 text-brand',
+        warning: 'bg-accent/20 text-accent',
         danger: 'bg-red-100 text-red-800',
-        info: 'bg-blue-100 text-blue-800',
+        info: 'bg-secondary text-primary',
     };
 
     return (

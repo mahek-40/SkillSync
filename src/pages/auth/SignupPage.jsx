@@ -114,39 +114,36 @@ export function SignupPage() {
         <PublicLayout>
             <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 relative overflow-hidden">
                 {/* Animated background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 -z-10" />
-                <div className="absolute top-10 right-20 w-72 h-72 bg-purple-300/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-10 left-20 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-base to-secondary/10 -z-10" />
                 
-                <Card className="w-full max-w-2xl bg-white/80 backdrop-blur-sm border border-purple-100 shadow-2xl">
+                <Card className="w-full max-w-2xl bg-white/95 backdrop-blur-sm border border-secondary shadow-2xl">
                     <div className="p-8">
                         {/* Icon */}
                         <div className="flex justify-center mb-6">
-                            <div className="w-16 h-16 bg-gradient-to-br from-brand-purple to-brand-cyan rounded-2xl flex items-center justify-center shadow-lg">
+                            <div className="w-16 h-16 bg-brand rounded-2xl flex items-center justify-center shadow-lg">
                                 <UserPlus className="w-8 h-8 text-white" />
                             </div>
                         </div>
                         
                         {/* Progress indicator */}
                         <div className="flex items-center justify-center gap-2 mb-8">
-                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 1 ? 'bg-gradient-to-r from-brand-purple to-brand-cyan' : 'bg-neutral-300'}`} />
-                            <div className="w-12 h-1 bg-neutral-200 rounded-full overflow-hidden">
-                                <div className={`h-full bg-gradient-to-r from-brand-purple to-brand-cyan transition-all duration-500 ${step >= 2 ? 'w-full' : 'w-0'}`} />
+                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 1 ? 'bg-brand' : 'bg-secondary'}`} />
+                            <div className="w-12 h-1 bg-secondary rounded-full overflow-hidden">
+                                <div className={`h-full bg-brand transition-all duration-500 ${step >= 2 ? 'w-full' : 'w-0'}`} />
                             </div>
-                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 2 ? 'bg-gradient-to-r from-brand-purple to-brand-cyan' : 'bg-neutral-300'}`} />
-                            <div className="w-12 h-1 bg-neutral-200 rounded-full overflow-hidden">
-                                <div className={`h-full bg-gradient-to-r from-brand-purple to-brand-cyan transition-all duration-500 ${step >= 3 ? 'w-full' : 'w-0'}`} />
+                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 2 ? 'bg-brand' : 'bg-secondary'}`} />
+                            <div className="w-12 h-1 bg-secondary rounded-full overflow-hidden">
+                                <div className={`h-full bg-brand transition-all duration-500 ${step >= 3 ? 'w-full' : 'w-0'}`} />
                             </div>
-                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 3 ? 'bg-gradient-to-r from-brand-purple to-brand-cyan' : 'bg-neutral-300'}`} />
+                            <div className={`w-3 h-3 rounded-full transition-all ${step >= 3 ? 'bg-brand' : 'bg-secondary'}`} />
                         </div>
 
-                        <h1 className="text-3xl font-bold bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent mb-2 text-center">
+                        <h1 className="text-3xl font-bold text-primary mb-2 text-center">
                             {step === 1 && 'Create Your Account'}
                             {step === 2 && 'Tell Us About You'}
                             {step === 3 && 'Your Skills'}
                         </h1>
-                        <p className="text-neutral-600 mb-8 text-center flex items-center justify-center gap-2">
-                            <Sparkles className="w-4 h-4 text-brand-purple" />
+                        <p className="text-primary/60 mb-8 text-center">
                             {step === 1 && 'Start your skill exchange journey'}
                             {step === 2 && 'Help others find you'}
                             {step === 3 && 'What can you teach? What do you want to learn?'}
@@ -222,7 +219,7 @@ export function SignupPage() {
                                     />
 
                                     <div>
-                                        <label className="block text-sm font-medium text-neutral-900 mb-3">
+                                        <label className="block text-sm font-medium text-primary mb-3">
                                             Availability (Optional)
                                         </label>
                                         <div className="flex flex-wrap gap-2">
@@ -232,8 +229,8 @@ export function SignupPage() {
                                                     type="button"
                                                     onClick={() => handleAvailabilityToggle(option)}
                                                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${formData.availability.includes(option)
-                                                            ? 'bg-brand-purple text-white'
-                                                            : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                                                            ? 'bg-brand text-white'
+                                                            : 'bg-secondary/30 text-primary hover:bg-secondary/50'
                                                         }`}
                                                 >
                                                     {option}
@@ -258,7 +255,7 @@ export function SignupPage() {
                                 <div className="space-y-6">
                                     {/* Skills Offered */}
                                     <div>
-                                        <label className="block text-sm font-medium text-neutral-900 mb-2">
+                                        <label className="block text-sm font-medium text-primary mb-2">
                                             Skills I Can Offer *
                                         </label>
                                         <div className="flex gap-2 mb-3">
@@ -295,7 +292,7 @@ export function SignupPage() {
 
                                     {/* Skills Wanted */}
                                     <div>
-                                        <label className="block text-sm font-medium text-neutral-900 mb-2">
+                                        <label className="block text-sm font-medium text-primary mb-2">
                                             Skills I Want to Learn *
                                         </label>
                                         <div className="flex gap-2 mb-3">
@@ -350,9 +347,9 @@ export function SignupPage() {
 
                         {step === 1 && (
                             <div className="mt-6 text-center">
-                                <p className="text-neutral-600">
+                                <p className="text-primary/60">
                                     Already have an account?{' '}
-                                    <Link to="/login" className="text-brand-purple font-semibold hover:text-brand-cyan transition-colors">
+                                    <Link to="/login" className="text-brand font-semibold hover:text-brand/80 transition-colors">
                                         Log in
                                     </Link>
                                 </p>

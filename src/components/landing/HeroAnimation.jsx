@@ -3,27 +3,27 @@ import { Code, Palette, Brain, Music, TrendingUp } from 'lucide-react';
 
 export function HeroAnimation() {
     const skillIcons = [
-        { Icon: Code, delay: 0, color: 'text-brand-purple' },
-        { Icon: Palette, delay: 0.2, color: 'text-brand-orange' },
-        { Icon: Brain, delay: 0.4, color: 'text-brand-cyan' },
-        { Icon: Music, delay: 0.6, color: 'text-brand-orange' },
-        { Icon: TrendingUp, delay: 0.8, color: 'text-brand-purple' }
+        { Icon: Code, delay: 0, color: 'text-brand' },
+        { Icon: Palette, delay: 0.2, color: 'text-accent' },
+        { Icon: Brain, delay: 0.4, color: 'text-brand' },
+        { Icon: Music, delay: 0.6, color: 'text-accent' },
+        { Icon: TrendingUp, delay: 0.8, color: 'text-brand' }
     ];
 
     return (
-        <div className="w-full h-96 bg-primary-gradient rounded-card-lg relative overflow-hidden shadow-premium" style={{ perspective: '1000px' }}>
+        <div className="w-full h-96 bg-primary-gradient rounded-xl relative overflow-hidden shadow-soft-lg" style={{ perspective: '1000px' }}>
             {/* Animated gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-brand-purple via-brand-cyan to-brand-purple bg-[length:200%_200%] animate-gradient" />
+            <div className="absolute inset-0 bg-gradient-to-br from-brand via-primary to-brand" />
             
             {/* Glowing blobs */}
             <motion.div
-                className="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-orange/30 rounded-full blur-[80px]"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+                className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-[80px]"
+                animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ duration: 8, repeat: Infinity }}
             />
             <motion.div
-                className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-brand-cream/30 rounded-full blur-[80px]"
-                animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
+                className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-[80px]"
+                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
                 transition={{ duration: 10, repeat: Infinity, delay: 2 }}
             />
 
@@ -31,24 +31,24 @@ export function HeroAnimation() {
             <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
                 {/* Left Avatar */}
                 <motion.div
-                    className="absolute left-[15%] w-24 h-24 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-glow-purple"
+                    className="absolute left-[15%] w-24 h-24 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-soft-lg"
                     style={{ transformStyle: 'preserve-3d' }}
                     animate={{ rotateY: [0, 5, 0, -5, 0], y: [0, -10, 0, -10, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 >
-                    <div className="w-16 h-16 bg-gradient-to-br from-white to-brand-cyan/30 rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-lg m-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-white to-brand/30 rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-lg m-4">
                         T
                     </div>
                 </motion.div>
 
                 {/* Right Avatar */}
                 <motion.div
-                    className="absolute right-[15%] w-24 h-24 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-glow-orange"
+                    className="absolute right-[15%] w-24 h-24 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-soft-lg"
                     style={{ transformStyle: 'preserve-3d' }}
                     animate={{ rotateY: [0, -5, 0, 5, 0], y: [0, -10, 0, -10, 0] }}
                     transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 >
-                    <div className="w-16 h-16 bg-gradient-to-br from-white to-brand-orange/30 rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-lg m-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-white to-accent/30 rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-lg m-4">
                         L
                     </div>
                 </motion.div>
@@ -57,7 +57,7 @@ export function HeroAnimation() {
                 <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
                     <motion.line
                         x1="25%" y1="50%" x2="75%" y2="50%"
-                        stroke="rgba(241, 230, 201, 0.5)"
+                        stroke="rgba(168, 197, 188, 0.5)"
                         strokeWidth="2"
                         strokeDasharray="5,5"
                         animate={{ opacity: [0.3, 0.7, 0.3] }}
@@ -75,13 +75,13 @@ export function HeroAnimation() {
                     return (
                         <motion.div
                             key={index}
-                            className={`absolute w-14 h-14 bg-white/95 backdrop-blur-sm rounded-xl shadow-premium flex items-center justify-center ${color}`}
+                            className={`absolute w-14 h-14 bg-white/95 backdrop-blur-sm rounded-xl shadow-soft-lg flex items-center justify-center ${color} hover:scale-110 transition-transform`}
                             style={{ left: '50%', top: '50%', transformStyle: 'preserve-3d' }}
                             animate={{
                                 x: [x * 0.8, x * 1.2, x * 0.8],
                                 y: [y * 0.8, y * 1.2, y * 0.8],
                                 rotateZ: [0, 360],
-                                scale: [1, 1.1, 1]
+                                scale: [1, 1.05, 1]
                             }}
                             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay }}
                         >
