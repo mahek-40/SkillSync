@@ -17,8 +17,8 @@ export function Header() {
     };
 
     return (
-        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-secondary shadow-soft">
-            <nav className="container-custom">
+        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-secondary shadow-soft w-full">
+            <nav className="container-custom w-full">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2">

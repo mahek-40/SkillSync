@@ -1,310 +1,101 @@
-// Mock API service using localStorage for data persistence
-// This simulates async API calls and can be easily swapped with real API later
+// Real API service connecting to FastAPI backend
+import { API_BASE_URL } from '../config/api.config';
 
-const STORAGE_KEYS = {
-    USERS: 'skillsync_users',
-    SWAPS: 'skillsync_swaps',
-    NOTIFICATIONS: 'skillsync_notifications',
-    REVIEWS: 'skillsync_reviews',
+// Helper function to handle API responses
+const handleResponse = async (response) => {
+    if (!response.ok) {
+        const error = await response.json().catch(() => ({ detail: 'Request failed' }));
+        throw new Error(error.detail || error.message || 'Request failed');
+    }
+    return response.json();
 };
 
-// Simulate network delay
-const delay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms));
+// Helper function to make API calls
+const apiCall = async (endpoint, options = {}) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            ...options.headers,
+        },
+        ...options,
+    };
 
-// Get data from localStorage
-const getStorageData = (key) => {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : null;
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+    return handleResponse(response);
 };
 
-// Set data to localStorage
-const setStorageData = (key, data) => {
-    localStorage.setItem(key, JSON.stringify(data));
-};
-
-// Initialize mock data if not exists
-const initMockData = () => {
-    if (!getStorageData(STORAGE_KEYS.USERS)) {
-        const mockUsers = [
-            {
-                id: '1',
-                name: 'Alice Johnson',
-                email: 'alice@example.com',
-                password: 'password123',
-                avatar: null,
-                location: 'San Francisco, CA',
-                bio: 'Passionate about web development and design. Love to teach and learn!',
-                availability: ['Weekends', 'Evenings'],
-                skillsOffered: ['React', 'JavaScript', 'UI/UX Design'],
-                skillsWanted: ['Python', 'Machine Learning', 'Spanish'],
-                experienceLevel: 'intermediate',
-                role: 'user',
-            },
-            {
-                id: '2',
-                name: 'Bob Smith',
-                email: 'bob@example.com',
-                password: 'password123',
-                avatar: null,
-                location: 'New York, NY',
-                bio: 'Data scientist with a love for teaching. Always eager to learn new skills.',
-                availability: ['Weekdays', 'Mornings'],
-                skillsOffered: ['Python', 'Data Science', 'SQL'],
-                skillsWanted: ['React', 'Node.js', 'Guitar'],
-                experienceLevel: 'advanced',
-                role: 'user',
-            },
-            {
-                id: '3',
-                name: 'Admin User',
-                email: 'admin@skillsync.com',
-                password: 'admin123',
-                avatar: null,
-                location: 'Remote',
-                bio: 'Platform administrator',
-                availability: [],
-                skillsOffered: [],
-                skillsWanted: [],
-                role: 'admin',
-            },
-        ];
-        setStorageData(STORAGE_KEYS.USERS, mockUsers);
-    }
-
-    if (!getStorageData(STORAGE_KEYS.SWAPS)) {
-        setStorageData(STORAGE_KEYS.SWAPS, []);
-    }
-
-    if (!getStorageData(STORAGE_KEYS.NOTIFICATIONS)) {
-        setStorageData(STORAGE_KEYS.NOTIFICATIONS, []);
-    }
-
-    if (!getStorageData(STORAGE_KEYS.REVIEWS)) {
-        setStorageData(STORAGE_KEYS.REVIEWS, []);
-    }
-};
-
-// Initialize on load
-initMockData();
-
-// API methods
 export const api = {
     // Authentication
     async login(email, password) {
-        await delay();
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-        const user = users.find(u => u.email === email && u.password === password);
-
-        if (!user) {
-            throw new Error('Invalid credentials');
-        }
-
-        const { password: _, ...userWithoutPassword } = user;
-        return userWithoutPassword;
+        return apiCall('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+        });
     },
 
     async signup(userData) {
-        await delay();
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-
-        // Check if email exists
-        if (users.find(u => u.email === userData.email)) {
-            throw new Error('Email already exists');
-        }
-
-        const newUser = {
-            id: Date.now().toString(),
-            ...userData,
-            avatar: null,
-            role: 'user',
-        };
-
-        users.push(newUser);
-        setStorageData(STORAGE_KEYS.USERS, users);
-
-        const { password: _, ...userWithoutPassword } = newUser;
-        return userWithoutPassword;
+        return apiCall('/api/auth/signup', {
+            method: 'POST',
+            body: JSON.stringify(userData),
+        });
     },
 
     // Users
     async getAllUsers(currentUserId) {
-        await delay();
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-        return users
-            .filter(u => u.id !== currentUserId && u.role !== 'admin')
-            .map(({ password, ...user }) => user);
+        const params = currentUserId ? `?exclude_id=${currentUserId}` : '';
+        return apiCall(`/api/users${params}`);
     },
 
     async getUserById(id) {
-        await delay();
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-        const user = users.find(u => u.id === id);
-        if (!user) throw new Error('User not found');
-        const { password, ...userWithoutPassword } = user;
-        
-        // Add completed swaps count
-        const swaps = getStorageData(STORAGE_KEYS.SWAPS) || [];
-        const completedSwaps = swaps.filter(
-            s => (s.requesterId === id || s.receiverId === id) && s.status === 'completed'
-        ).length;
-        
-        return { ...userWithoutPassword, completedSwaps };
+        return apiCall(`/api/users/${id}`);
     },
 
     async updateUser(id, updates) {
-        await delay();
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-        const index = users.findIndex(u => u.id === id);
-
-        if (index === -1) throw new Error('User not found');
-
-        users[index] = { ...users[index], ...updates };
-        setStorageData(STORAGE_KEYS.USERS, users);
-
-        const { password, ...userWithoutPassword } = users[index];
-        return userWithoutPassword;
+        return apiCall(`/api/users/${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(updates),
+        });
     },
 
     // Swaps
     async createSwap(swapData) {
-        await delay();
-        const swaps = getStorageData(STORAGE_KEYS.SWAPS) || [];
-
-        const newSwap = {
-            id: Date.now().toString(),
-            ...swapData,
-            status: 'pending',
-            createdAt: new Date().toISOString(),
-        };
-
-        swaps.push(newSwap);
-        setStorageData(STORAGE_KEYS.SWAPS, swaps);
-
-        // Create notification for receiver
-        this.createNotification({
-            userId: swapData.receiverId,
-            type: 'swap_request',
-            message: `You have a new swap request!`,
-            swapId: newSwap.id,
+        return apiCall('/api/swaps', {
+            method: 'POST',
+            body: JSON.stringify(swapData),
         });
-
-        return newSwap;
     },
 
     async getSwapsByUser(userId) {
-        await delay();
-        const swaps = getStorageData(STORAGE_KEYS.SWAPS) || [];
-        return swaps.filter(s => s.requesterId === userId || s.receiverId === userId);
+        return apiCall(`/api/swaps/user/${userId}`);
     },
 
     async updateSwapStatus(swapId, status) {
-        await delay();
-        const swaps = getStorageData(STORAGE_KEYS.SWAPS) || [];
-        const index = swaps.findIndex(s => s.id === swapId);
-
-        if (index === -1) throw new Error('Swap not found');
-
-        swaps[index].status = status;
-        swaps[index].updatedAt = new Date().toISOString();
-        setStorageData(STORAGE_KEYS.SWAPS, swaps);
-
-        return swaps[index];
-    },
-
-    async submitFeedback(swapId, userId, feedback) {
-        await delay();
-        const swaps = getStorageData(STORAGE_KEYS.SWAPS) || [];
-        const index = swaps.findIndex(s => s.id === swapId);
-
-        if (index === -1) throw new Error('Swap not found');
-
-        if (!swaps[index].feedback) {
-            swaps[index].feedback = {};
-        }
-
-        swaps[index].feedback[userId] = feedback;
-        setStorageData(STORAGE_KEYS.SWAPS, swaps);
-
-        return swaps[index];
+        return apiCall(`/api/swaps/${swapId}/status`, {
+            method: 'PUT',
+            body: JSON.stringify({ status }),
+        });
     },
 
     // Notifications
-    async createNotification(notificationData) {
-        const notifications = getStorageData(STORAGE_KEYS.NOTIFICATIONS) || [];
-
-        const newNotification = {
-            id: Date.now().toString(),
-            ...notificationData,
-            read: false,
-            createdAt: new Date().toISOString(),
-        };
-
-        notifications.push(newNotification);
-        setStorageData(STORAGE_KEYS.NOTIFICATIONS, notifications);
-
-        return newNotification;
-    },
-
     async getNotificationsByUser(userId) {
-        await delay();
-        const notifications = getStorageData(STORAGE_KEYS.NOTIFICATIONS) || [];
-        return notifications
-            .filter(n => n.userId === userId)
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        return apiCall(`/api/notifications/user/${userId}`);
     },
 
     async markNotificationAsRead(notificationId) {
-        await delay();
-        const notifications = getStorageData(STORAGE_KEYS.NOTIFICATIONS) || [];
-        const index = notifications.findIndex(n => n.id === notificationId);
-
-        if (index !== -1) {
-            notifications[index].read = true;
-            setStorageData(STORAGE_KEYS.NOTIFICATIONS, notifications);
-        }
-
-        return notifications[index];
+        return apiCall(`/api/notifications/${notificationId}/read`, {
+            method: 'PUT',
+        });
     },
 
-    // Reviews
+    // Note: Reviews functionality not implemented in backend yet
+    // These are placeholder methods for future implementation
     async getUserReviews(userId) {
-        await delay();
-        const reviews = getStorageData(STORAGE_KEYS.REVIEWS) || [];
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-        
-        return reviews
-            .filter(r => r.reviewedUserId === userId)
-            .map(review => {
-                const reviewer = users.find(u => u.id === review.reviewerId);
-                return {
-                    ...review,
-                    reviewerName: reviewer?.name || 'Unknown',
-                    reviewerAvatar: reviewer?.avatar || null,
-                };
-            })
-            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        // TODO: Implement reviews in backend
+        return [];
     },
 
     async createReview(reviewData) {
-        await delay();
-        const reviews = getStorageData(STORAGE_KEYS.REVIEWS) || [];
-        const users = getStorageData(STORAGE_KEYS.USERS) || [];
-
-        const newReview = {
-            id: Date.now().toString(),
-            ...reviewData,
-            createdAt: new Date().toISOString(),
-        };
-
-        reviews.push(newReview);
-        setStorageData(STORAGE_KEYS.REVIEWS, reviews);
-
-        // Get reviewer info
-        const reviewer = users.find(u => u.id === reviewData.reviewerId);
-        return {
-            ...newReview,
-            reviewerName: reviewer?.name || 'Unknown',
-            reviewerAvatar: reviewer?.avatar || null,
-        };
+        // TODO: Implement reviews in backend
+        return reviewData;
     },
 };

@@ -117,13 +117,6 @@ export function LoginPage() {
                                 </Link>
                             </p>
                         </div>
-
-                        {/* Demo credentials hint */}
-                        <div className="mt-6 p-4 bg-secondary/20 rounded-lg text-sm text-primary/70 border border-secondary">
-                            <p className="font-semibold mb-1 text-brand">Demo Credentials:</p>
-                            <p>User: alice@example.com / password123</p>
-                            <p>Admin: admin@skillsync.com / admin123</p>
-                        </div>
                     </div>
                 </Card>
             </div>

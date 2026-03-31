@@ -12,7 +12,19 @@ export const authService = {
 
     async signup(userData) {
         try {
-            const user = await api.signup(userData);
+            // Transform frontend field names to backend format if needed
+            const backendData = {
+                name: userData.name,
+                email: userData.email,
+                password: userData.password,
+                location: userData.location || '',
+                bio: userData.bio || '',
+                availability: userData.availability || [],
+                skillsOffered: userData.skillsOffered || [],
+                skillsWanted: userData.skillsWanted || [],
+            };
+            
+            const user = await api.signup(backendData);
             return user;
         } catch (error) {
             throw new Error(error.message || 'Signup failed');
