@@ -1,221 +1,446 @@
-# 🚀 SkillSync Frontend
+# 🚀 SkillSync
 
 <div align="center">
 
-<!-- TODO: Add project logo (e.g., in public/logo.png) -->
 <p align="center">
-  <img src="src/assets/logo.jpg" alt="SkillSync Logo" width="200"/>
+  <img src="src/assets/logo.png" alt="SkillSync Logo" width="200"/>
 </p>
-
-
-<!-- ![Logo](public/logo.png) -->
 
 [![GitHub stars](https://img.shields.io/github/stars/mahek-40/SkillSync?style=for-the-badge&logo=github)](https://github.com/mahek-40/SkillSync/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/mahek-40/SkillSync?style=for-the-badge&logo=github)](https://github.com/mahek-40/SkillSync/network)
 [![GitHub issues](https://img.shields.io/github/issues/mahek-40/SkillSync?style=for-the-badge&logo=github)](https://github.com/mahek-40/SkillSync/issues)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-**A dynamic platform for seamless skill exchange and collaboration.**
+**A modern platform for seamless skill exchange and collaboration**
+
+[Live Demo](#) • [Report Bug](https://github.com/mahek-40/SkillSync/issues) • [Request Feature](https://github.com/mahek-40/SkillSync/issues)
 
 </div>
 
-## 📖 Overview
+---
 
-SkillSync is a modern web application designed to connect individuals seeking to exchange or learn new skills. This repository contains the **frontend client** for the SkillSync platform, built with React and Vite. It provides a user-friendly interface for browsing skills, managing user profiles, initiating skill swap requests, and engaging in real-time communication.
+## 📖 About The Project
 
-The application is built to consume a separate backend API (not included in this repository) for data persistence, user authentication, and core business logic.
+SkillSync is a full-stack web application that connects individuals who want to exchange skills. Whether you're a developer looking to learn design, or a musician wanting to understand coding, SkillSync makes it easy to find the perfect skill-swap partner.
 
-## ✨ Features
+### ✨ Key Features
 
--   🎯 **Skill Discovery & Listing:** Browse and list various skills offered by users.
--   👤 **User Profiles:** Create and manage personal profiles with skill sets and interests.
--   🤝 **Skill Exchange:** Request and offer skill swaps with other users.
--   🔐 **Authentication:** Secure user login and registration, including Google OAuth integration.
--   ☁️ **Cloudinary Integration:** Upload and manage profile pictures and other media.
--   ⚡ **Responsive Design:** Optimized for a smooth experience across devices.
+- 🎯 **Skill Discovery** - Browse and search for users offering specific skills
+- 👤 **User Profiles** - Create detailed profiles showcasing your skills and interests
+- 🤝 **Skill Exchange** - Send and receive skill swap requests
+- 🔔 **Real-time Notifications** - Get notified when someone wants to swap skills with you
+- 🔐 **Secure Authentication** - JWT-based authentication with password hashing
+- 📊 **Admin Dashboard** - Comprehensive admin panel for platform management
+- 📱 **Responsive Design** - Seamless experience across all devices
+- ⚡ **Real-time Updates** - Live data synchronization with MongoDB
 
+---
 
 ## 🛠️ Tech Stack
 
-**Frontend:**
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![React Router](https://img.shields.io/badge/React_Router-6-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
-[![PostCSS](https://img.shields.io/badge/PostCSS-8-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white)](https://postcss.org/)
+### Frontend
+![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.3-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-7.13-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-5.0-000000?style=for-the-badge)
 
-**Tools:**
-[![npm](https://img.shields.io/badge/npm-9-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
+### Backend
+![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-7.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Motor](https://img.shields.io/badge/Motor-3.3-13AA52?style=for-the-badge)
 
+### Additional Tools
+- **Framer Motion** - Smooth animations
+- **React Query** - Data fetching and caching
+- **Lucide React** - Beautiful icons
+- **React Toastify** - Toast notifications
+- **Pydantic** - Data validation
+- **Passlib** - Password hashing (bcrypt)
+- **Python-JOSE** - JWT token handling
 
-## 🚀 Quick Start
-
-Follow these steps to get the SkillSync frontend up and running on your local machine.
-
-### Prerequisites
-Before you begin, ensure you have the following installed:
--   **Node.js**: v18.x or higher (LTS recommended)
--   **npm**: Included with Node.js
--   **SkillSync Backend**: This frontend requires the [SkillSync Backend API](https://github.com/mahek-40/SkillSync-Backend) (TODO: Adjust backend repo link) to be running. Please set it up first.
-
-### Installation
-
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/mahek-40/SkillSync.git
-    cd SkillSync
-    ```
-
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
-
-3.  **Environment setup**
-    Create a `.env` file in the root directory by copying the example:
-    ```bash
-    cp .env.example .env
-    ```
-    Configure your environment variables in the newly created `.env` file:
-    ```ini
-    # Base URL for the backend API
-    VITE_API_URL=http://localhost:5000/api
-
-    # Cloudinary configuration for image uploads
-    VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-    VITE_CLOUDINARY_API_KEY=your_cloudinary_api_key
-    VITE_CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-    # Google OAuth client ID for authentication
-    VITE_GOOGLE_CLIENT_ID=your_google_client_id
-
-    # WebSocket URL for real-time communication
-    VITE_SOCKET_URL=ws://localhost:5000
-    ```
-    *Replace placeholders (`your_...`) with your actual service credentials.*
-
-4.  **Start development server**
-    ```bash
-    npm run dev
-    ```
-
-5.  **Open your browser**
-    Visit `http://localhost:5173` to see the application running.
+---
 
 ## 📁 Project Structure
 
 ```
 SkillSync/
-├── public/                 # Static assets (e.g., images, manifest)
-├── src/                    # All application source code
-│   ├── assets/             # Static assets like images/icons
-│   ├── components/         # Reusable UI components
-│   ├── config/             # Configuration files (e.g., API settings)
-│   ├── context/            # React Context for global state management
-│   ├── hooks/              # Custom React hooks
-│   ├── pages/              # Main application pages/routes
-│   ├── services/           # API interaction services (e.g., Axios instances)
-│   ├── store/              # State management (if using libraries like Redux/Zustand)
-│   ├── styles/             # Global styles and Tailwind directives
-│   ├── utils/              # Utility functions and helpers
-│   └── main.jsx            # Main entry point for the React application
-├── .env.example            # Example environment variables
-├── .gitignore              # Files/directories to ignore in Git
-├── SETUP_GUIDE.md          # Comprehensive setup instructions
-├── eslint.config.js        # ESLint configuration for code quality
-├── index.html              # Main HTML file for the application
-├── package-lock.json       # Records exact dependency versions
-├── package.json            # Project metadata and scripts
-├── postcss.config.js       # PostCSS configuration for styling
-├── tailwind.config.js      # Tailwind CSS configuration
-└── vite.config.js          # Vite build tool configuration
+├── backend/                    # FastAPI Backend
+│   ├── app/
+│   │   ├── main.py            # Application entry point
+│   │   ├── api/               # API routes
+│   │   │   ├── deps.py        # Dependencies
+│   │   │   └── routes/        # Route handlers
+│   │   │       ├── auth_routes.py
+│   │   │       ├── user_routes.py
+│   │   │       ├── swap_routes.py
+│   │   │       └── notification_routes.py
+│   │   ├── core/              # Core functionality
+│   │   │   ├── config.py      # Configuration
+│   │   │   └── security.py    # Security utilities
+│   │   ├── db/                # Database
+│   │   │   └── database.py    # MongoDB connection
+│   │   ├── schemas/           # Pydantic models
+│   │   │   ├── user_schema.py
+│   │   │   ├── auth_schema.py
+│   │   │   └── swap_schema.py
+│   │   └── services/          # Business logic
+│   │       └── auth_service.py
+│   ├── requirements.txt       # Python dependencies
+│   ├── .env                   # Environment variables
+│   └── start-backend.ps1      # Startup script
+│
+├── src/                       # React Frontend
+│   ├── assets/                # Static assets
+│   ├── components/            # React components
+│   │   ├── common/            # Shared components
+│   │   ├── features/          # Feature-specific components
+│   │   ├── landing/           # Landing page components
+│   │   ├── layout/            # Layout components
+│   │   └── ui/                # UI components
+│   ├── config/                # Configuration
+│   │   └── api.config.js      # API configuration
+│   ├── pages/                 # Page components
+│   │   ├── admin/             # Admin pages
+│   │   ├── auth/              # Authentication pages
+│   │   ├── dashboard/         # Dashboard pages
+│   │   ├── exchange/          # Exchange pages
+│   │   ├── notifications/     # Notification pages
+│   │   ├── profile/           # Profile pages
+│   │   ├── public/            # Public pages
+│   │   └── swaps/             # Swap pages
+│   ├── services/              # API services
+│   │   ├── api.js             # API client
+│   │   └── authService.js     # Auth service
+│   ├── store/                 # State management
+│   │   └── authStore.js       # Auth store (Zustand)
+│   ├── styles/                # Global styles
+│   ├── utils/                 # Utility functions
+│   └── main.jsx               # Application entry
+│
+├── public/                    # Public assets
+├── .env.development           # Development environment
+├── .env.production            # Production environment
+├── package.json               # Node dependencies
+├── tailwind.config.js         # Tailwind configuration
+├── vite.config.js             # Vite configuration
+└── README.md                  # This file
 ```
 
-## ⚙️ Configuration
+---
 
-### Environment Variables
-The application relies on environment variables for sensitive data and configuration settings. These are loaded from the `.env` file.
+## 🚀 Getting Started
 
-| Variable                     | Description                                         | Default                    | Required |
-|------------------------------|-----------------------------------------------------|----------------------------|----------|
-| `VITE_API_URL`               | Base URL for the SkillSync Backend API              |`http://localhost:5000/api` | Yes      |
-| `VITE_CLOUDINARY_CLOUD_NAME` | Your Cloudinary cloud name for image uploads        | `(empty)`                  | Yes      |
-| `VITE_CLOUDINARY_API_KEY`    | Your Cloudinary API key                             | `(empty)`                  | Yes      |
-| `VITE_CLOUDINARY_API_SECRET` | Your Cloudinary API secret                          | `(empty)`                  | Yes      |
-| `VITE_GOOGLE_CLIENT_ID`      | Google Client ID for OAuth authentication           | `(empty)`                  | Yes      |
-| `VITE_SOCKET_URL`            | WebSocket URL for real-time communication           | `ws://localhost:5000`      | Yes      |
+### Prerequisites
 
-### Configuration Files
--   `vite.config.js`: Configures Vite for development and build processes.
--   `tailwind.config.js`: Customizes Tailwind CSS themes, variants, and plugins.
--   `postcss.config.js`: Configures PostCSS plugins, including Tailwind CSS and Autoprefixer.
--   `eslint.config.js`: Defines linting rules for consistent code style and quality.
+Before you begin, ensure you have the following installed:
 
-## 🔧 Development
+- **Node.js** (v18.x or higher)
+- **Python** (v3.8 or higher)
+- **MongoDB** (v7.0 or higher)
+- **npm** or **yarn**
+- **pip** (Python package manager)
 
-### Available Scripts
-In the project directory, you can run:
+### Installation
 
-| Command             | Description                                                   |
-|---------------------|---------------------------------------------------------------|
-| `npm run dev`       | Starts the development server with Vite.                      |
-| `npm run build`     | Builds the app for production to the `dist` folder.           |
-| `npm run lint`      | Runs ESLint to check for code style and potential errors.     |
-| `npm run preview`   | Serves the production build locally for testing.              |
+#### 1. Clone the Repository
 
-### Development Workflow
-1.  Ensure all prerequisites, especially the backend API, are running.
-2.  Install dependencies using `npm install`.
-3.  Configure environment variables in `.env`.
-4.  Start the development server with `npm run dev`.
-5.  Develop components and features, changes will hot-reload.
-6.  Use `npm run lint` regularly to maintain code quality.
-
-## 🧪 Testing
-
-This project uses ESLint for code linting.
 ```bash
-# Run linting checks
-npm run lint
+git clone https://github.com/mahek-40/SkillSync.git
+cd SkillSync
 ```
-No dedicated unit or integration testing framework (e.g., Jest, React Testing Library, Cypress) was explicitly detected in `package.json` or `SETUP_GUIDE.md`. Developers are encouraged to implement tests as the project evolves.
 
-## 🚀 Deployment
+#### 2. Backend Setup
+
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Configure environment variables
+# Edit backend/.env with your settings
+
+# Start MongoDB (if not running)
+# Windows: net start MongoDB
+# macOS: brew services start mongodb-community
+# Linux: sudo systemctl start mongod
+
+# Start the backend server
+python -m uvicorn app.main:app --reload --port 5000
+```
+
+The backend will be available at `http://localhost:5000`
+
+#### 3. Frontend Setup
+
+```bash
+# Navigate to project root
+cd ..
+
+# Install Node dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+The frontend will be available at `http://localhost:5173`
+
+---
+
+## ⚙️ Environment Variables
+
+### Backend (.env)
+
+Create a `backend/.env` file:
+
+```env
+# MongoDB Configuration
+MONGO_URI=mongodb://localhost:27017
+
+# Security
+SECRET_KEY=your_super_secret_key_change_in_production
+ALGORITHM=HS256
+
+# Token Expiration
+ACCESS_TOKEN_EXPIRE_MINUTES=15
+REFRESH_TOKEN_EXPIRE_DAYS=7
+```
+
+### Frontend (.env.development)
+
+Create a `.env.development` file:
+
+```env
+# API Configuration
+VITE_API_URL=http://localhost:5000
+```
+
+### Frontend (.env.production)
+
+Create a `.env.production` file:
+
+```env
+# API Configuration
+VITE_API_URL=https://your-production-api.com
+```
+
+---
+
+## 🎯 How to Run
+
+### Development Mode
+
+**Terminal 1 - Backend:**
+```bash
+cd backend
+python -m uvicorn app.main:app --reload --port 5000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+npm run dev
+```
 
 ### Production Build
-To create an optimized production build:
+
+**Backend:**
+```bash
+cd backend
+uvicorn app.main:app --host 0.0.0.0 --port 5000 --workers 4
+```
+
+**Frontend:**
+```bash
+npm run build
+npm run preview
+```
+
+---
+
+## 📡 API Endpoints
+
+### Authentication
+- `POST /api/auth/signup` - Register new user
+- `POST /api/auth/login` - User login
+
+### Users
+- `GET /api/users` - Get all users
+- `GET /api/users/{id}` - Get user by ID
+- `PUT /api/users/{id}` - Update user profile
+
+### Swaps
+- `POST /api/swaps` - Create swap request
+- `GET /api/swaps/user/{id}` - Get user's swaps
+- `PUT /api/swaps/{id}/status` - Update swap status
+
+### Notifications
+- `GET /api/notifications/user/{id}` - Get user notifications
+- `PUT /api/notifications/{id}/read` - Mark notification as read
+
+### Documentation
+- `GET /docs` - Interactive API documentation (Swagger UI)
+- `GET /redoc` - Alternative API documentation (ReDoc)
+
+---
+
+## 🗄️ Database Schema
+
+### Users Collection
+```javascript
+{
+  _id: ObjectId,
+  name: String,
+  email: String (unique),
+  password: String (hashed),
+  avatar: String | null,
+  location: String,
+  bio: String,
+  availability: [String],
+  skills_offered: [String],
+  skills_wanted: [String],
+  experience_level: String,
+  role: "user" | "admin",
+  created_at: DateTime
+}
+```
+
+### Swaps Collection
+```javascript
+{
+  _id: ObjectId,
+  requester_id: String,
+  receiver_id: String,
+  requester_skills: [String],
+  receiver_skills: [String],
+  status: "pending" | "accepted" | "rejected" | "completed",
+  created_at: DateTime,
+  updated_at: DateTime
+}
+```
+
+### Notifications Collection
+```javascript
+{
+  _id: ObjectId,
+  user_id: String,
+  type: String,
+  message: String,
+  swap_id: String,
+  read: Boolean,
+  created_at: DateTime
+}
+```
+
+---
+
+## 🚢 Deployment
+
+### Frontend Deployment (Vercel/Netlify)
+
+1. Build the application:
 ```bash
 npm run build
 ```
-This command bundles the React application into static files in the `dist/` directory, ready for deployment.
 
-### Deployment Options
-The `dist/` folder can be deployed to any static site hosting service, such as:
--   **Vercel**
--   **Netlify**
--   **GitHub Pages**
--   **Firebase Hosting**
--   **Amazon S3**
+2. Deploy the `dist` folder to your hosting service
 
-Ensure your hosting environment's base URL matches your `VITE_API_URL` configuration if deploying to a non-root path or for server-side rendering setup (though this is a client-side only app).
+3. Set environment variables:
+```
+VITE_API_URL=https://your-backend-api.com
+```
+
+### Backend Deployment (Railway/Render/AWS)
+
+1. Set up MongoDB Atlas or use your MongoDB instance
+
+2. Configure environment variables on your hosting platform
+
+3. Deploy using:
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+### Recommended Hosting
+
+- **Frontend**: Vercel, Netlify, GitHub Pages
+- **Backend**: Railway, Render, AWS EC2, DigitalOcean
+- **Database**: MongoDB Atlas (Free tier available)
+
+---
+
+## 🧪 Testing
+
+### Run Linting
+```bash
+npm run lint
+```
+
+### Test Backend
+```bash
+cd backend
+python test_imports.py
+```
+
+### Test API
+Visit `http://localhost:5000/docs` for interactive API testing
+
+---
+
+## 📸 Screenshots
+
+<!-- Add your screenshots here -->
+```
+[Landing Page]
+[Dashboard]
+[Skill Exchange]
+[User Profile]
+```
+
+---
 
 ## 🤝 Contributing
 
-We welcome contributions to SkillSync! Please refer to the [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed development setup instructions.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have suggestions for improving this project, feel free to fork this repository and create a pull request, or open an issue with the tag "enhancement".
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 👥 Authors
+
+**M & A**
+- GitHub: [@mahek-40](https://github.com/mahek-40)
+
+---
 
 ## 🙏 Acknowledgments
 
--   Built with [React](https://react.dev/) for an efficient UI.
--   Powered by [Vite](https://vitejs.dev/) for a fast development experience.
--   Styled using [Tailwind CSS](https://tailwindcss.com/) for utility-first styling.
--   Utilizes [Cloudinary](https://cloudinary.com/) for media management.
--   Leverages [Google OAuth](https://developers.google.com/identity/oauth2) for authentication.
+- [React](https://react.dev/) - UI Framework
+- [FastAPI](https://fastapi.tiangolo.com/) - Backend Framework
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Vite](https://vitejs.dev/) - Build Tool
+- [Framer Motion](https://www.framer.com/motion/) - Animations
 
-## 📞 Support & Contact
+---
 
--   🐛 Issues: [GitHub Issues](https://github.com/mahek-40/SkillSync/issues)
+## 📞 Support
+
+For support, email your-email@example.com or open an issue on GitHub.
 
 ---
 
