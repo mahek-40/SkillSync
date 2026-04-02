@@ -1347,7 +1347,8 @@ python -m uvicorn app.main:app --reload --port 5000  # Dev server
 mongod --dbpath /data/db
 
 # Or MongoDB Atlas cloud connection
-MONGO_URI=mongodb+srv://user:pass@cluster.mongodb.net/skillsync
+# Get your connection string from MongoDB Atlas dashboard
+# Format: mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>
 ```
 
 #### 3.9.2 Environment Configuration

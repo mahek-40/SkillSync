@@ -21,17 +21,37 @@ export function SwapsPage() {
         const fetchSwaps = async () => {
             try {
                 const data = await api.getSwapsByUser(user.id);
-                // Fetch user details for each swap
-                const users = JSON.parse(localStorage.getItem('skillsync_users') || '[]');
-                const swapsWithUsers = data.map(swap => {
-                    const requester = users.find(u => u.id === swap.requesterId);
-                    const receiver = users.find(u => u.id === swap.receiverId);
-                    return {
-                        ...swap,
-                        requesterName: requester?.name || 'Unknown',
-                        receiverName: receiver?.name || 'Unknown',
-                    };
+                
+                // Fetch user details for each unique user ID in swaps
+                const userIds = new Set();
+                data.forEach(swap => {
+                    userIds.add(swap.requesterId);
+                    userIds.add(swap.receiverId);
                 });
+
+                // Fetch all user details from API
+                const userDetailsPromises = Array.from(userIds).map(id => 
+                    api.getUserById(id).catch(err => {
+                        console.error(`Failed to fetch user ${id}:`, err);
+                        return null;
+                    })
+                );
+                
+                const userDetails = await Promise.all(userDetailsPromises);
+                const usersMap = {};
+                userDetails.forEach(user => {
+                    if (user) {
+                        usersMap[user.id] = user;
+                    }
+                });
+
+                // Map swaps with user names
+                const swapsWithUsers = data.map(swap => ({
+                    ...swap,
+                    requesterName: usersMap[swap.requesterId]?.name || 'Unknown',
+                    receiverName: usersMap[swap.receiverId]?.name || 'Unknown',
+                }));
+                
                 setSwaps(swapsWithUsers);
             } catch (error) {
                 console.error('Error fetching swaps:', error);

@@ -27,25 +27,27 @@ export function AdminDashboard() {
     const loadAdminData = async () => {
         setIsLoading(true);
         try {
-            const allUsers = JSON.parse(localStorage.getItem('skillsync_users') || '[]');
-            const allSwaps = JSON.parse(localStorage.getItem('skillsync_swaps') || '[]');
-
+            // Fetch all users from API
+            const allUsers = await api.getAllUsers();
+            
+            // Fetch all swaps - we'll need to get swaps for all users
+            // For now, we'll just get stats from users
             const adminUsers = allUsers.filter(u => u.role === 'admin');
             const regularUsers = allUsers.filter(u => u.role === 'user');
-            const pendingSwaps = allSwaps.filter(s => s.status === 'pending');
-            const completedSwaps = allSwaps.filter(s => s.status === 'completed');
 
+            // Note: We don't have an endpoint to get all swaps, so we'll set these to 0
+            // You may want to add an admin endpoint to get all swaps
             setStats({
                 totalUsers: allUsers.length,
                 adminUsers: adminUsers.length,
                 regularUsers: regularUsers.length,
-                totalSwaps: allSwaps.length,
-                pendingSwaps: pendingSwaps.length,
-                completedSwaps: completedSwaps.length,
+                totalSwaps: 0, // Would need admin endpoint
+                pendingSwaps: 0, // Would need admin endpoint
+                completedSwaps: 0, // Would need admin endpoint
             });
 
             setUsers(allUsers.map(({ password, ...user }) => user));
-            setSwaps(allSwaps.slice(0, 10));
+            setSwaps([]); // Would need admin endpoint to get all swaps
         } catch (error) {
             console.error('Failed to load admin data:', error);
         } finally {
